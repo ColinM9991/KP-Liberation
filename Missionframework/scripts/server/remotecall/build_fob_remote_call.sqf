@@ -27,5 +27,6 @@ FOB_build_in_progress = false;
 publicVariable "FOB_build_in_progress";
 
 if !(KPLIB_use_liberation_civilians) then {
-    [[_new_fob, 150, 150, 0, false]] call grad_civs_common_fnc_addExclusionZone; 
+    [[_new_fob, 150, 150, 0, false]] call grad_civs_common_fnc_addExclusionZone;
+    publicVariable "grad_civs_common_exclusion_zones";
 }
