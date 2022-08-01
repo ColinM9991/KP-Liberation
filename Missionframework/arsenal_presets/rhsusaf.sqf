@@ -1,6 +1,6 @@
 /*
     RHS United States Armed Forces Arsenal Preset
-    Last Update: 2020-05-08
+    Last Update: 2022-08-01
 
     Needed:
         - RHSUSAF - https://steamcommunity.com/sharedfiles/filedetails/?id=843577117
@@ -83,6 +83,7 @@ GRLIB_arsenal_weapons = [
     "rhs_weap_m4a1_carryhandle_m203S",                              // M4A1 (M203S)
     "rhs_weap_m4a1_carryhandle_mstock",                             // M4A1 (Magpull Stock)
     "rhs_weap_m4a1_carryhandle",                                    // M4A1
+                                                                    // Test Weapon
     "rhs_weap_m4a1_d_mstock",                                       // M4A1 PIP (Desert/Magpull Stock)
     "rhs_weap_m4a1_d",                                              // M4A1 PIP (Desert)
     "rhs_weap_m4a1_m203",                                           // M4A1 PIP (M203)
