@@ -1,6 +1,6 @@
 /*
     RHS United States Armed Forces Arsenal Preset
-    Last Update: 2020-05-08
+    Last Update: 2022-08-03
 
     Needed:
         - RHSUSAF - https://steamcommunity.com/sharedfiles/filedetails/?id=843577117
@@ -1008,7 +1008,7 @@ GRLIB_arsenal_backpacks = [
 ];
 
 ACE_arsenal_defaults = [
-    ["Infantry", [[],[],[],["rhs_uniform_g3_mc",[["ACE_CableTie",4],["ACE_EarPlugs",1],["ACE_Flashlight_XL50",1],["ACE_IR_Strobe_Item",3],["ACRE_PRC343",1]]],["rhsusf_spcs_ocp_rifleman_alt",[["rhs_mag_an_m8hc",2,1],["rhs_mag_m67",3,1]]],["rhsusf_assault_eagleaiii_ocp",[["ACE_fieldDressing",20],["ACE_bloodIV_250",1],["ACE_EntrenchingTool",1],["ACE_epinephrine",3],["ACE_morphine",15],["ACE_tourniquet",4],["ACE_adenosine",2]]],"rhsusf_opscore_mc_cover_pelt_cam","",["rhsusf_bino_lerca_1200_tan","","","",[],[],""],["ItemMap","ItemGPS","ItemRadioAcreFlagged","ItemCompass","ACE_Altimeter","ACE_NVG_Wide"]]]
+    ["Infantry", [[],[],[],["rhs_uniform_FROG01_d",[["ACE_CableTie",4],["ACE_EarPlugs",1],["ACE_Flashlight_XL50",1],["ACE_IR_Strobe_Item",3],["ACRE_PRC343",1]]],["rhsusf_mbav_rifleman",[["rhs_mag_an_m8hc",2,1],["rhs_mag_m67",3,1]]],["rhsusf_assault_eagleaiii_coy",[["ACE_fieldDressing",20],["ACE_bloodIV_250",1],["ACE_EntrenchingTool",1],["ACE_epinephrine",3],["ACE_morphine",15],["ACE_tourniquet",4],["ACE_adenosine",2]]],"rhsusf_lwh_helmet_marpatd_headset","",["ACE_Vector","","","",[],[],""],["ItemMap","ItemGPS","ItemRadioAcreFlagged","ItemCompass","ACE_Altimeter","ACE_NVG_Wide"]]]
 ];
 
 _uavOperator = missionNamespace getVariable["uavoperator", objNull];
