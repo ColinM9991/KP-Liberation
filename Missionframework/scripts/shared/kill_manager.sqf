@@ -6,7 +6,7 @@ if (isServer) then {
 
     // Get Killer, when ACE enabled, via lastDamageSource
     if (KP_liberation_ace) then {
-        if (local _unit) then {
+        if (!KPLIB_use_liberation_civilians || local _unit) then {
             _killer = _unit getVariable ["ace_medical_lastDamageSource", _killer];
             if (KP_liberation_kill_debug > 0) then {["_unit is local to server", "KILL"] call KPLIB_fnc_log;};
         } else {
