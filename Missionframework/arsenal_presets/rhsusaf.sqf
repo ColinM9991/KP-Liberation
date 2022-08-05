@@ -1,6 +1,6 @@
 /*
     RHS United States Armed Forces Arsenal Preset
-    Last Update: 2022-08-03
+    Last Update: 2022-08-06
 
     Needed:
         - RHSUSAF - https://steamcommunity.com/sharedfiles/filedetails/?id=843577117
@@ -335,11 +335,6 @@ GRLIB_arsenal_magazines = [
     "20Rnd_762x51_Mag",                                             // 7.62 mm 20Rnd Mag
 
     // Vanilla Standard Grenades & Explosives
-    "APERSBoundingMine_Range_Mag",                                  // APERS Bounding Mine
-    "APERSMine_Range_Mag",                                          // APERS Mine
-    "APERSMineDispenser_Mag",                                       // APERS Mine Dispenser
-    "APERSTripMine_Wire_Mag",                                       // APERS Tripwire Mine
-    "ATMine_Range_Mag",                                             // AT Mine
     "B_IR_Grenade",                                                 // IR Grenade [NATO]
     "Chemlight_blue",                                               // Chemlight (Blue)
     "Chemlight_green",                                              // Chemlight (Green)
@@ -349,10 +344,6 @@ GRLIB_arsenal_magazines = [
     "DemoCharge_Remote_Mag",                                        // Explosive Charge
     "Drone_Range_Mag_dummy",                                        // AT Mine
     "Drone_Range_Mag",                                              // AT Mine
-    "IEDLandBig_Remote_Mag",                                        // Large IED (Dug-in)
-    "IEDLandSmall_Remote_Mag",                                      // Small IED (Dug-in)
-    "IEDUrbanBig_Remote_Mag",                                       // Large IED (Urban)
-    "IEDUrbanSmall_Remote_Mag",                                     // Small IED (Urban)
     "SatchelCharge_Remote_Mag",                                     // Explosive Satchel
     "SLAMDirectionalMine_Wire_Mag",                                 // M6 SLAM Mine
     "TrainingMine_Mag",                                             // Training Mine
