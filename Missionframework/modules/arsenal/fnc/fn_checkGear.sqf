@@ -22,28 +22,27 @@ params [
     ["_backpack", "", [""]]
 ];
 
-if(!isNil "TVG_fnc_checkGear") exitWith {[_backpack] call TVG_fnc_checkGear};
-
 private _removedItems = [];
+private _allowedItems = [] call TVG_fnc_getPlayerAllowedItems;
 
 // Check single item slots
-if !(toLower (headgear player) in KP_liberation_allowed_items) then {
+if !(toLower (headgear player) in _allowedItems) then {
     _removedItems pushBack (headgear player);
     removeHeadgear player;
 };
-if !(toLower (goggles player) in KP_liberation_allowed_items) then {
+if !(toLower (goggles player) in _allowedItems) then {
     _removedItems pushBack (goggles player);
     removeGoggles player;
 };
-if !(toLower (uniform player) in KP_liberation_allowed_items) then {
+if !(toLower (uniform player) in _allowedItems) then {
     _removedItems pushBack (uniform player);
     removeUniform player;
 };
-if !(toLower (vest player) in KP_liberation_allowed_items) then {
+if !(toLower (vest player) in _allowedItems) then {
     _removedItems pushBack (vest player);
     removeVest player;
 };
-if (!(toLower (backpack player) in KP_liberation_allowed_items) && ((backpack player) != _backpack)) then {
+if (!(toLower (backpack player) in _allowedItems) && ((backpack player) != _backpack)) then {
     _removedItems pushBack (backpack player);
     removeBackpack player;
 };
@@ -58,7 +57,7 @@ _items = _items apply {toLower _x};
     _removedItems pushBack _x;
     player unassignItem _x;
     player removeItems _x;
-} forEach (((_items arrayIntersect _items) - KP_liberation_allowed_items) select {!([_x] call KPLIB_fnc_isRadio)});
+} forEach (((_items arrayIntersect _items) - _allowedItems) select {!([_x] call TVG_fnc_isRadio)});
 
 // Check magazines
 _items = ((getMagazineCargo (uniformContainer player)) select 0);
@@ -68,11 +67,11 @@ _items = _items apply {toLower _x};
 {
     _removedItems pushBack _x;
     player removeMagazines _x;
-} forEach ((_items arrayIntersect _items) - KP_liberation_allowed_items);
+} forEach ((_items arrayIntersect _items) - _allowedItems);
 
 // Check weapons stored in inventory containers
 {
-    if (!isNull _x) then {_removedItems append ([_x] call KPLIB_fnc_checkWeaponCargo);};
+    if (!isNull _x) then {_removedItems append ([_x] call TVG_fnc_checkWeaponCargo);};
 } forEach [uniformContainer player, vestcontainer player, backpackContainer player];
 
 // Check equipped weapons
@@ -80,7 +79,7 @@ _items = (weapons player) apply {toLower ([_x] call BIS_fnc_baseWeapon)};
 {
     _removedItems pushBack _x;
     player removeWeapon _x;
-} forEach (_items - KP_liberation_allowed_items);
+} forEach (_items - _allowedItems);
 
 // Check weapon items of primary weapon
 _items = primaryWeaponItems player;
@@ -89,7 +88,7 @@ _items = _items apply {toLower _x};
 {
     _removedItems pushBack _x;
     player removePrimaryWeaponItem _x;
-} forEach (_items - KP_liberation_allowed_items);
+} forEach (_items - _allowedItems);
 
 // Check weapon items of secondary weapon
 _items = secondaryWeaponItems player;
@@ -98,7 +97,7 @@ _items = _items apply {toLower _x};
 {
     _removedItems pushBack _x;
     player removeSecondaryWeaponItem _x;
-} forEach (_items - KP_liberation_allowed_items);
+} forEach (_items - _allowedItems);
 
 // Check weapon items of handgun
 _items = handgunItems player;
@@ -107,7 +106,7 @@ _items = _items apply {toLower _x};
 {
     _removedItems pushBack _x;
     player removeHandgunItem _x;
-} forEach (_items - KP_liberation_allowed_items);
+} forEach (_items - _allowedItems);
 
 // Remove duplicates and empty strings
 _removedItems = (_removedItems arrayIntersect _removedItems) - [""];
@@ -116,7 +115,6 @@ _removedItems = (_removedItems arrayIntersect _removedItems) - [""];
 if !(_removedItems isEqualTo []) exitWith {
     [_removedItems] spawn {
         params ["_removedItems"];
-        [format ["Found %1 at player %2", _removedItems, name player], "BLACKLIST"] remoteExecCall ["KPLIB_fnc_log", 2];
         hint format [localize "STR_BLACKLISTED_ITEM_FOUND", _removedItems joinString "\n"];
         sleep 6;
         hintSilent "";
