@@ -20,6 +20,7 @@ class ItemRanks {
     class addOrRemoveAssignment     {};
     class assignOrUnassignItem      {};
     class checkGear                 {};
+    class checkWeaponCargo          {};
     class filterRanks               {};
     class filterRankItems           {};
     class getAllRankAssignments     {};
@@ -28,6 +29,7 @@ class ItemRanks {
     class getItemDisplay            {};
     class getPlayerAllowedItems     {};
     class getRankRestrictedItems    {};
+    class getWeaponComponents       {};
     class initRankRestrictions      {};
     class isRadio                   {};
     class openItemRanksDialog       {};

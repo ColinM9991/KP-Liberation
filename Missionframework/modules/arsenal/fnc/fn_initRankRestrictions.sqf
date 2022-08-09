@@ -32,6 +32,11 @@ if (!isDedicated && hasInterface) then {
 
     [] call TVG_fnc_refreshArsenal;
 
+    // Gear Validation Event Handlers
+    player addEventHandler["InventoryClosed", {
+        [] call TVG_fnc_checkGear;
+    }];
+
     if(_useAceArsenal) then {
         ["ace_arsenal_displayClosed", {
             [backpack player] call TVG_fnc_checkGear;
@@ -42,7 +47,7 @@ if (!isDedicated && hasInterface) then {
         }] call BIS_fnc_addScriptedEventHandler;
     };
 
-    
+    // Arsenal Refresh Event Handlers
     ["TVG_rankItemsUpdated", {
         [] call TVG_fnc_refreshArsenal;
     }] call CBA_fnc_addEventHandler;
@@ -50,7 +55,8 @@ if (!isDedicated && hasInterface) then {
     ["KPR_event_playerRankChanged", {
         [] call TVG_fnc_refreshArsenal;
     }] call CBA_fnc_addEventHandler;
-
+    
+    // ACE Action for Admins
     _action = [
         "KPR_ArsenalManage", 
         "KPR Arsenal Management",
