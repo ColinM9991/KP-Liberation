@@ -114,6 +114,7 @@ class ItemRanksDialog {
             y = STARTING_POS_BUTTON;
             w = 0.0498837 * safezoneW;
             h = 0.022 * safezoneH;
+            onButtonClick = "closeDialog 2;";
         };
     }
 }
