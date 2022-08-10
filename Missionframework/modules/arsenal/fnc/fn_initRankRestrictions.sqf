@@ -2,7 +2,7 @@
     File: fn_initRankRestrictions.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-08-09
-    Last Update: 2022-08-09
+    Last Update: 2022-08-10
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -19,15 +19,8 @@ params[
     ["_useAceArsenal", true, [true]]
 ];
 
-if (isServer) then {
-    TVG_ranksArsenalInitialized = true;
-    TVG_ranksAceArsenal = _useAceArsenal;
-
-    publicVariable "TVG_ranksArsenalInitialized";
-    publicVariable "TVG_ranksAceArsenal";
-};
-
 if (!isDedicated && hasInterface) then {
+    TVG_ranksAceArsenal = _useAceArsenal;
     TVG_ranksArsenalItems = _arsenalItems;
 
     [] call TVG_fnc_refreshArsenal;
@@ -55,6 +48,8 @@ if (!isDedicated && hasInterface) then {
     ["KPR_event_playerRankChanged", {
         [] call TVG_fnc_refreshArsenal;
     }] call CBA_fnc_addEventHandler;
+    
+    TVG_ranksArsenalInitialized = true;
     
     // ACE Action for Admins
     _action = [
