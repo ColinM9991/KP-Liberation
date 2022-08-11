@@ -2,7 +2,7 @@
     File: fn_handleBuild.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-08-01
-    Last Update: 2022-08-02
+    Last Update: 2022-08-11
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -86,8 +86,8 @@ while { KPLIB_buildingInProgress } do {
     KPLIB_isBuilding = true;
     while { KPLIB_isBuilding && {!KPLIB_hasCancelledBuild} && {alive player} } do {
         private _playerDirection = getDir player;
-        private _trueDir = 90 - _playerDirection;
         private _truePos = [];
+        private _trueDir = 90 - _playerDirection;
         if ((toLower (typeOf _vehicle)) in KPLIB_b_static_classes) then {
             _truePos = [((getposATL player) select 0) + (build_distance * (cos _trueDir)), ((getposATL player) select 1) + (build_distance * (sin _trueDir)),((getposATL player) select 2)];
         } else {
@@ -129,9 +129,18 @@ while { KPLIB_buildingInProgress } do {
             };
         };
 
-        uiSleep 0.01;
+        uiSleep 0.04;
     };
     
+    if (!KPLIB_repeatBuild) then {
+        build_rotation = 0;
+        build_elevation = 0;
+        build_distance = 0;
+        build_vector = false;
+    } else {
+        KPLIB_repeatBuild = false;
+    };
+
     if (KPLIB_hasCancelledBuild) exitWith {
         deleteVehicle _vehicle;
         KPLIB_hasCancelledBuild = false;
