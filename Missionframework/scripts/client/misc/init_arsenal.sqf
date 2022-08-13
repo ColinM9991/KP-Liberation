@@ -97,19 +97,19 @@ if (KP_liberation_arsenalUsePreset) then {
     };
 
     if (KP_liberation_ace && KP_liberation_arsenal_type) then {
-        [player, KP_liberation_allowed_items, false] call ace_arsenal_fnc_addVirtualItems;
+        if(isClass (configFile >> "CfgPatches" >> "KP_Ranks")) then {
+            [KP_liberation_arsenal_type, player, KP_liberation_allowed_items] call TVG_fnc_initRankRestrictions;
+        } else {
+            [player, KP_liberation_allowed_items, false] call ace_arsenal_fnc_addVirtualItems;
+        };
 
         {
             [_x select 0, _x select 1] call ace_arsenal_fnc_addDefaultLoadout;
         } forEach ACE_arsenal_defaults;
     };
-
+    
     // Lowercase all classnames
     KP_liberation_allowed_items = KP_liberation_allowed_items apply {toLower _x};
-
-    if(isClass (configFile >> "CfgPatches" >> "KP_Ranks")) then {
-        [KP_liberation_allowed_items, KP_liberation_arsenal_type] call TVG_fnc_initRankRestrictions;
-    };
 } else {
     [missionNamespace, true] call BIS_fnc_addVirtualWeaponCargo;
     [missionNamespace, true] call BIS_fnc_addVirtualMagazineCargo;

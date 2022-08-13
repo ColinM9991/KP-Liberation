@@ -2,7 +2,7 @@
     File: fn_getItemDisplay.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-08-06
-    Last Update: 2022-08-09
+    Last Update: 2022-08-13
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -34,7 +34,7 @@ switch true do {
     case (isClass (configFile >> "CfgVehicles" >> _className)): {
         _itemClass = configFile >> "CfgVehicles"  >> _className;
     };
-    case (isClass (configFile >> "CfgGlasses" >> _classNAme)): {
+    case (isClass (configFile >> "CfgGlasses" >> _className)): {
         _itemClass = configFile >> "CfgGlasses" >> _className;
     };
 };

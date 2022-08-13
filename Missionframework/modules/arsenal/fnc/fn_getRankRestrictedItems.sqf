@@ -2,7 +2,7 @@
     File: fn_getRankRestrictedItems.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-08-08
-    Last Update: 2022-08-11
+    Last Update: 2022-08-13
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:

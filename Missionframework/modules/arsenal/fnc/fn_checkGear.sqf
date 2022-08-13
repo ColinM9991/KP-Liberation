@@ -2,7 +2,7 @@
     File: fn_checkGear.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-11-22
-    Last Update: 2022-08-09
+    Last Update: 2022-08-13
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -23,7 +23,7 @@ params [
 ];
 
 private _removedItems = [];
-private _allowedItems = [] call TVG_fnc_getPlayerAllowedItems;
+private _allowedItems = ([] call TVG_fnc_getPlayerAllowedItems) apply {toLower _x};
 
 // Check single item slots
 if !(toLower (headgear player) in _allowedItems) then {
