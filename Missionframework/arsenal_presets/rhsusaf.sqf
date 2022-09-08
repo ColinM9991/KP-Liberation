@@ -1,6 +1,6 @@
 /*
     RHS United States Armed Forces Arsenal Preset
-    Last Update: 2022-08-06
+    Last Update: 2022-09-08
 
     Needed:
         - RHSUSAF - https://steamcommunity.com/sharedfiles/filedetails/?id=843577117
@@ -606,6 +606,11 @@ GRLIB_arsenal_items = [
     "rhsusf_shemagh2_od",                                           // Shemagh (OD/alt)
     "rhsusf_shemagh2_tan",                                          // Shemagh (Tan/alt)
     "rhsusf_shemagh2_white",                                        // Shemagh (White/alt)
+    "murshun_cigs_0",                                               // Immersion Cigs (Stage 0)
+    "murshun_cigs_1",                                               // Immersion Cigs (Stage 1)
+    "murshun_cigs_2",                                               // Immersion Cigs (Stage 2)
+    "murshun_cigs_3",                                               // Immersion Cigs (Stage 3)
+    "murshun_cigs_4",                                               // Immersion Cigs (Stage 4)
 
     // Vests
     "rhsusf_iotv_ocp_Grenadier",                                    // IOTV (Grenadier/OEF-CP)
