@@ -113,6 +113,7 @@ _player addAction [
         && {
             _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
             || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
+            || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
         && {!KPLIB_isBuilding}
