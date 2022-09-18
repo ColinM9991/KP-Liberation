@@ -230,6 +230,7 @@ class CfgDiscordRichPresence {
 class CfgFunctions {
     #include "CfgFunctions_TVG.hpp"
     #include "CfgFunctions.hpp"
+    #include "KPCF\KPCF_functions.hpp"
     #include "KP\KPPLM\KPPLM_functions.hpp"
 };
 
@@ -249,4 +250,4 @@ class CfgTaskDescriptions {
 #include "GREUH\UI\GREUH_interface.hpp"
 #include "KP\KPGUI\KPGUI_defines.hpp"
 #include "KP\KPPLM\ui\KPPLM_dialog.hpp"
-
+#include "KPCF\ui\KPCF_dialog.hpp"
