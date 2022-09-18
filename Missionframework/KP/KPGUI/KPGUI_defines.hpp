@@ -35,6 +35,13 @@
 #define KP_COLOR_PLAYERDEFINE           {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"}
 #define KP_COLOR_BACKGROUND             {0, 0, 0, 0.5}
 
+// Leftovers from the old framework. Will be removed/replaced in further development
+#define COLOR_BROWN                     {0.30, 0.25, 0.2, 0.75}
+#define COLOR_GREEN                     {0.2, 0.23, 0.18, 0.75}
+#define COLOR_WHITE                     {1, 1, 1, 1}
+#define COLOR_NOALPHA                   {0, 0, 0, 0}
+#define COLOR_BLACK                     {0, 0, 0, 1}
+#define COLOR_OPFOR_NOALPHA             {1, 0, 0, 1}
 /*
     --- Functions ---
 */
@@ -133,6 +140,17 @@
 
 #define KP_WIDTH_VAL_LP                 0.2
 #define KP_HEIGHT_VAL_LP                (1 - 2 * KP_Y_VAL_LP - KP_HEIGTH_TITLE - KP_HEIGTH_BUTTON - 2 * KP_SPACING_Y)
+
+/*
+    --- Small dialog components ---
+    (X from 0.3 - 0.7, Y from 0.05 - 0.8)
+*/
+
+#define KP_X_VAL_S                      0.3
+#define KP_Y_VAL_S                      0.05
+
+#define KP_WIDTH_VAL_S                  0.4
+#define KP_HEIGHT_VAL_S                 (0.75 - KP_HEIGTH_TITLE - KP_HEIGTH_BUTTON - 2 * KP_SPACING_Y)
 
 // Classes include
 #include "KPGUI_classes.hpp"

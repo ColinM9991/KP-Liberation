@@ -107,7 +107,9 @@ if (KP_liberation_arsenalUsePreset) then {
             [_x select 0, _x select 1] call ace_arsenal_fnc_addDefaultLoadout;
         } forEach ACE_arsenal_defaults;
     };
-    
+
+    KPCF_whitelistedItems = +KP_liberation_allowed_items;
+    [] call KPCF_fnc_init;
     // Lowercase all classnames
     KP_liberation_allowed_items = KP_liberation_allowed_items apply {toLower _x};
 } else {
