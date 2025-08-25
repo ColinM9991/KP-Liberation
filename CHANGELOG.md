@@ -1,12 +1,5 @@
 # Changelog
 
-## 0.96.8a (2022-08-08)
-* Added: GRAD Civilians
-* Added: Arsenal rank restrictions
-* Tweaked: Rewrite of build system
-* Tweaked: Keyboard shortcuts for build system
-* Tweaked: Added support for ACE Default Loadouts
-
 ## 0.96.7a (2020-09-12)
 * Added: Contact DLC static weapon backpacks to default blacklist.
 * Added: Czech translation. Thanks to [MJVEVERUSKA](https://github.com/MJVEVERUSKA)

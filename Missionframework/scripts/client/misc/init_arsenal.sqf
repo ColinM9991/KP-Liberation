@@ -106,10 +106,6 @@ if (KP_liberation_arsenalUsePreset) then {
 
     // Lowercase all classnames
     KP_liberation_allowed_items = KP_liberation_allowed_items apply {toLower _x};
-
-    if(isClass (configFile >> "CfgPatches" >> "KP_Ranks")) then {
-        [KP_liberation_allowed_items, KP_liberation_arsenal_type] call TVG_fnc_initRankRestrictions;
-    };
 } else {
     [missionNamespace, true] call BIS_fnc_addVirtualWeaponCargo;
     [missionNamespace, true] call BIS_fnc_addVirtualMagazineCargo;

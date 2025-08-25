@@ -20,8 +20,6 @@ if (isNil "GRLIB_respawn_loadout") then {
 };
 
 [] call KPLIB_fnc_addActionsPlayer;
-// Disable Steam Score tracking
-player addEventHandler["HandleScore", {false}];
 
 // Support Module handling
 if ([

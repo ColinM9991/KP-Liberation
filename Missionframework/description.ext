@@ -2,7 +2,7 @@
     File: description.ext
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-10-16
-    Last Update: 2022-08-09
+    Last Update: 2020-05-09
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -228,7 +228,6 @@ class CfgDiscordRichPresence {
 };
 
 class CfgFunctions {
-    #include "CfgFunctions_TVG.hpp"
     #include "CfgFunctions.hpp"
     #include "KP\KPPLM\KPPLM_functions.hpp"
 };
@@ -241,7 +240,6 @@ class CfgTaskDescriptions {
     #include "scripts\client\tutorial\CfgTaskDescriptions.hpp"
 };
 
-#include "modules\arsenal\ui\ItemRanksDialog.hpp"
 #include "ui\liberation_interface.hpp"
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"

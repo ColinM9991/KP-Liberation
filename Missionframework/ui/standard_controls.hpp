@@ -330,7 +330,15 @@ class kndr_MapControl {
         coefMax = 1.00;
     };
 };
-
+class RscText {
+        type = CT_STATIC;
+        idc = -1;
+        style = ST_LEFT;
+        colorBackground[] = {0, 0, 0, 0};
+        colorText[] = {1, 1, 1, 1};
+        font = "Bitstream";
+        sizeEx = 0.04;
+};
 class StdText {
     idc = -1;
     type =  CT_STATIC;

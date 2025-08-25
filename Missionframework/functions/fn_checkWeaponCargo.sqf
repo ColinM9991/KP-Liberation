@@ -2,7 +2,7 @@
     File: fn_removeWeaponCargo.sqf
     Author: Zharf - https://github.com/zharf
     Date: 2019-06-21
-    Last Update: 2022-08-09
+    Last Update: 2020-04-13
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:

@@ -2,7 +2,7 @@
     File: fn_checkGear.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-11-22
-    Last Update: 2022-08-09
+    Last Update: 2020-04-16
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -21,8 +21,6 @@
 params [
     ["_backpack", "", [""]]
 ];
-
-if(!isNil "TVG_fnc_checkGear") exitWith {[_backpack] call TVG_fnc_checkGear};
 
 private _removedItems = [];
 
