@@ -2,7 +2,7 @@
     File: fn_removeWeaponCargo.sqf
     Author: Zharf - https://github.com/zharf
     Date: 2019-06-21
-    Last Update: 2022-08-13
+    Last Update: 2022-08-09
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -26,7 +26,7 @@ if (isNull _container) exitWith {["Null object given"] call BIS_fnc_error; []};
 
 private _removed = [];
 private _weaponsItemsCargo = weaponsItemsCargo _container;
-private _allowedItems = ([] call TVG_fnc_getPlayerAllowedItems) apply {toLower _x};
+private _allowedItems = [] call TVG_fnc_getPlayerAllowedItems;
 clearWeaponCargoGlobal _container;
 
 {
