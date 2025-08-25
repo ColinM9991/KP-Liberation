@@ -2,7 +2,7 @@
     File: fn_getPlayerAllowedItems.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-08-09
-    Last Update: 2022-08-10
+    Last Update: 2022-08-09
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -27,5 +27,5 @@ if (isNil "TVG_playerAllowedArsenalItems") then {TVG_playerAllowedArsenalItems =
 
 private _rankRestrictions = [] call TVG_fnc_getRankRestrictedItems;
 
-TVG_playerAllowedArsenalItems = TVG_playerArsenalItems select { !(_x in _rankRestrictions) };
+TVG_playerAllowedArsenalItems = TVG_ranksArsenalItems select { !(_x in _rankRestrictions) };
 TVG_playerAllowedArsenalItems
