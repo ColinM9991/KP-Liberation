@@ -148,6 +148,7 @@ params ["_unit", "_killer"];
     if (!isPlayer _unit) then {
         [{
             params ["_unit"];
+            if((side (group _unit) == KPLIB_side_civilian) && !KPLIB_use_liberation_civilians) exitWith {};
             if (_unit isKindOf "CAManBase") exitWith {
                 hideBody _unit;
             };

@@ -359,7 +359,10 @@ KPLIB_arsenalMagazines = [
     "IEDUrbanSmall_Remote_Mag",                                     // Small IED (Urban)
     "SatchelCharge_Remote_Mag",                                     // Explosive Satchel
     "SLAMDirectionalMine_Wire_Mag",                                 // M6 SLAM Mine
-    "TrainingMine_Mag"                                              // Training Mine
+    "TrainingMine_Mag",                                             // Training Mine
+    "murshun_cigs_matches",
+    "murshun_cigs_lighter",
+    "murshun_cigs_cigpack"
 ];
 
 KPLIB_arsenalItems = [
@@ -616,6 +619,11 @@ KPLIB_arsenalItems = [
     "rhsusf_shemagh2_od",                                           // Shemagh (OD/alt)
     "rhsusf_shemagh2_tan",                                          // Shemagh (Tan/alt)
     "rhsusf_shemagh2_white",                                        // Shemagh (White/alt)
+    "murshun_cigs_cig0",                                            // Immersion Cigs (Stage 0)
+    "murshun_cigs_cig1",                                            // Immersion Cigs (Stage 1)
+    "murshun_cigs_cig2",                                            // Immersion Cigs (Stage 2)
+    "murshun_cigs_cig3",                                            // Immersion Cigs (Stage 3)
+    "murshun_cigs_cig4",                                            // Immersion Cigs (Stage 4)
 
     // Vests
     "rhsusf_iotv_ocp_Grenadier",                                    // IOTV (Grenadier/OEF-CP)
@@ -882,6 +890,7 @@ KPLIB_arsenalItems = [
     "ACE_HuntIR_monitor",                                           // HuntIR monitor
     "ACE_IR_Strobe_Item",                                           // IR Strobe
     "ACE_Kestrel4500",                                              // Kestrel 4500NV
+        "ACE_key_west",                                                 // Vehicle key - West
     "ACE_M26_Clacker",                                              // M152 Firing Device
     "ACE_MapTools",                                                 // Map Tools
     "ACE_microDAGR",                                                // MicroDAGR GPS
@@ -930,6 +939,7 @@ KPLIB_arsenalItems = [
     "ACE_VMM3",                                                     // VMM3
     "ACE_wirecutter",                                               // Wirecutter
     "ACE_Yardage450",                                               // Yardage 450
+    "ACE_SpareBarrel",                                              // Spare Barrel
 
     // ACRE Items
     "ACRE_PRC117F",                                                 // AN/PRC-117F
@@ -999,4 +1009,8 @@ KPLIB_arsenalBackpacks = [
     "tf_rt1523g_rhs",                                               // RT-1523G (ASIP) RHS
     "tf_rt1523g_sage",                                              // RT-1523G (ASIP) Sage
     "tf_rt1523g"                                                    // RT-1523G (ASIP)
+];
+
+ACE_arsenal_defaults = [
+    ["Infantry", [[],[],[],["rhs_uniform_FROG01_d",[["ACE_CableTie",4],["ACE_EarPlugs",1],["ACE_Flashlight_XL50",1],["ACE_IR_Strobe_Item",3],["ACRE_PRC343",1]]],["rhsusf_mbav_rifleman",[["rhs_mag_an_m8hc",2,1],["rhs_mag_m67",3,1]]],["rhsusf_assault_eagleaiii_coy",[["ACE_fieldDressing",20],["ACE_bloodIV_250",1],["ACE_EntrenchingTool",1],["ACE_epinephrine",3],["ACE_morphine",15],["ACE_tourniquet",4],["ACE_adenosine",2]]],"rhsusf_lwh_helmet_marpatd_headset","",["ACE_Vector","","","",[],[],""],["ItemMap","ItemGPS","ItemRadioAcreFlagged","ItemCompass","ACE_Altimeter","ACE_NVG_Wide"]]]
 ];

@@ -1,7 +1,7 @@
 scriptName "do_build";
 // TODO This needs absolutely a code refactoring, flamethrower or nuke
 
-private [ "_maxdist", "_truepos", "_built_object_remote", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions" ];
+private [ "_maxdist", "_truepos", "_built_object_remote", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir"];
 
 build_confirmed = 0;
 _maxdist = KPLIB_range_fob;
@@ -156,55 +156,8 @@ while { true } do {
 
                 _truepos = [_truepos select 0, _truepos select 1, (_truepos select 2) +  build_elevation];
 
-                _near_objects = (_truepos nearobjects ["AllVehicles", _dist]) ;
-                _near_objects = _near_objects + (_truepos nearobjects [KPLIB_b_fobBox, _dist]);
-                _near_objects = _near_objects + (_truepos nearobjects [KPLIB_b_arsenal, _dist]);
-
-                _near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]) ;
-                _near_objects_25 = _near_objects_25 + (_truepos nearobjects [KPLIB_b_fobBox, 50]);
-                _near_objects_25 = _near_objects_25 + (_truepos nearobjects [KPLIB_b_arsenal, 50]);
-
-                if(	buildtype != 6 ) then {
-                    _near_objects = _near_objects + (_truepos nearobjects ["Static", _dist]);
-                    _near_objects_25 = _near_objects_25 + (_truepos nearobjects ["Static", 50]);
-                };
-
-                private _remove_objects = [];
-                {
-                    private _typeOfX = typeOf _x;
-                    if ((_x isKindOf "Animal") || (_typeOfX in KPLIB_collisionIgnoreObjects) || (_typeOfX isKindOf "CAManBase") || (isPlayer _x) || (_x == _vehicle) || ((toLower (typeOf _vehicle)) in KPLIB_b_static_classes)) then {
-                        _remove_objects pushback _x;
-                    };
-                } foreach _near_objects;
-
-                private _remove_objects_25 = [];
-                {
-                    private _typeOfX = typeOf _x;
-                    if ((_x isKindOf "Animal") || (_typeOfX in KPLIB_collisionIgnoreObjects) || (_typeOfX isKindOf "CAManBase") || (isPlayer _x) || (_x == _vehicle) || ((toLower (typeOf _vehicle)) in KPLIB_b_static_classes)) then {
-                        _remove_objects_25 pushback _x;
-                    };
-                } foreach _near_objects_25;
-
-                _near_objects = _near_objects - _remove_objects;
-                _near_objects_25 = _near_objects_25 - _remove_objects_25;
-
-                if ( count _near_objects == 0 ) then {
-                    {
-                        _dist22 = 0.6 * (sizeOf (typeof _x));
-                        if ( _dist22 < 1 ) then { _dist22 = 1 };
-                        if (_truepos distance _x < _dist22) then {
-                            _near_objects pushback _x;
-                        };
-                    } foreach _near_objects_25;
-                };
-
-                if ( count _near_objects != 0 ) then {
-                    KPLIB_conflicting_objects = _near_objects;
-                } else {
-                    KPLIB_conflicting_objects = [];
-                };
-
-                if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
+                
+                if (((_truepos distance _posfob) < _maxdist) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
 
                     if ( ((buildtype == 6) || (buildtype == 99)) && ((gridmode % 2) == 1) ) then {
                         _vehicle setpos [round (_truepos select 0),round (_truepos select 1), _truepos select 2];
@@ -237,16 +190,6 @@ while { true } do {
                     };
                     _vehicle setpos _ghost_spot;
                     build_invalid = 1;
-                    if(count _near_objects > 0) then {
-                        KPLIB_ui_notif = format [localize "STR_PLACEMENT_IMPOSSIBLE",count _near_objects, round _dist];
-
-                        if (_debug_colisions) then {
-                            private [ "_objs_classnames" ];
-                            _objs_classnames = [];
-                            { _objs_classnames pushback (typeof _x) } foreach _near_objects;
-                            hint format [ "Colisions : %1", _objs_classnames ];
-                        };
-                    };
                     if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
                         KPLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
                     };
