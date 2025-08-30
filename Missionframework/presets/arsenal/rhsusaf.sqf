@@ -835,6 +835,7 @@ KPLIB_arsenalItems = [
     "rhsusf_bino_m24_ARD",                                          // M24 Binoculars (ARD)
     "rhsusf_bino_m24",                                              // M24 Binoculars
     "rhsusf_Rhino",                                                 // Rhino mount
+    "optic_MRCO",                                                   // IOR Valdada - RCO
 
     // Vanilla Standard Items
     "acc_flashlight_pistol",                                        // Pistol Flashlight

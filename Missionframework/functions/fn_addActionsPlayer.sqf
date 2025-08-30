@@ -55,7 +55,7 @@ _player addAction [
             _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -76,7 +76,7 @@ _player addAction [
             || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -94,7 +94,7 @@ _player addAction [
         && {alive _originalTarget}
         && {!((units group _originalTarget) isEqualTo [_originalTarget])}
         && {(leader group _originalTarget) isEqualTo _originalTarget}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -115,14 +115,14 @@ _player addAction [
             || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
 // Build
 _player addAction [
     ["<t color='#FFFF00'>", localize "STR_BUILD_ACTION", "</t><img size='2' image='res\ui_build.paa'/>"] joinString "",
-    "scripts\client\build\open_build_menu.sqf",
+    {[] call KPLIB_fnc_openBuildMenu},
     nil,
     -750,
     false,
@@ -136,7 +136,7 @@ _player addAction [
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             || {[3] call KPLIB_fnc_hasPermission}
         }
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -160,7 +160,7 @@ _player addAction [
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             || {[5] call KPLIB_fnc_hasPermission}
         }
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -182,7 +182,7 @@ _player addAction [
             || {[3] call KPLIB_fnc_hasPermission}
         }
         && {(_originalTarget getVariable ['KPLIB_nearProd', []] select 3) isEqualTo []}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -205,7 +205,7 @@ _player addAction [
         }
         && {!((_originalTarget getVariable ['KPLIB_nearProd', []] select 3) isEqualTo [])}
         && {!((_originalTarget getVariable ['KPLIB_nearProd', []]) select 4)}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -228,7 +228,7 @@ _player addAction [
         }
         && {!((_originalTarget getVariable ['KPLIB_nearProd', []] select 3) isEqualTo [])}
         && {!((_originalTarget getVariable ['KPLIB_nearProd', []]) select 5)}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -251,7 +251,7 @@ _player addAction [
         }
         && {!((_originalTarget getVariable ['KPLIB_nearProd', []] select 3) isEqualTo [])}
         && {!((_originalTarget getVariable ['KPLIB_nearProd', []]) select 6)}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -267,7 +267,7 @@ _player addAction [
     "
         alive _originalTarget
         && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (KPLIB_range_fob * 0.8)}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -289,7 +289,7 @@ _player addAction [
             _originalTarget getVariable ['KPLIB_fobDist', 99999] < (KPLIB_range_fob * 0.8)
             || {!(_originalTarget getVariable ['KPLIB_nearProd', []] isEqualTo [])}
         }
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -312,7 +312,7 @@ _player addAction [
             KPLIB_sectors_fob isEqualTo []
             || KPLIB_production isEqualTo []
         )}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -329,7 +329,7 @@ _player addAction [
         KPLIB_param_permissions
         && {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
         && {alive _originalTarget}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -346,7 +346,7 @@ if (player == ([] call KPLIB_fnc_getCommander)) then {
         "
             alive _originalTarget
             && {isNull (_originalTarget getVariable ['KPLIB_ownedZeusModule', objNull])}
-            && {build_confirmed isEqualTo 0}
+            && {!KPLIB_isBuilding}
         "
     ];
 };
@@ -365,7 +365,7 @@ _player addAction [
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}
         && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (KPLIB_range_fob * 0.8)}
-        && {build_confirmed isEqualTo 0}
+        && {!KPLIB_isBuilding}
     "
 ];
 
@@ -394,7 +394,7 @@ _player addAction [
     "",
     toString {
         alive _originalTarget &&
-        build_confirmed == 0 && _this in _this && {!isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
+        !KPLIB_isBuilding && _this in _this && {!isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     }
 ];
 

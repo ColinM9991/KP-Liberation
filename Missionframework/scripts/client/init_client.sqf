@@ -12,7 +12,6 @@ execVM "scripts\client\actions\intel_manager.sqf";
 execVM "scripts\client\actions\recycle_manager.sqf";
 execVM "scripts\client\actions\unflip_manager.sqf";
 execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
-execVM "scripts\client\build\do_build.sqf";
 execVM "scripts\client\commander\enforce_whitelist.sqf";
 if (KPLIB_param_mapMarkers) then {execVM "scripts\client\markers\empty_vehicles_marker.sqf";};
 execVM "scripts\client\markers\fob_markers.sqf";

@@ -221,7 +221,7 @@ if ((!(_sector in KPLIB_sectors_player)) && (([markerPos _sector, [_opforcount] 
         _managed_units = _managed_units + (units _grp);
     };
 
-    if (KPLIB_use_liberation_civilians && {LIB_param_civActivity > 0}) then {
+    if (KPLIB_use_liberation_civilians && {KPLIB_param_civActivity > 0}) then {
         _managed_units = _managed_units + ([_sector] call KPLIB_fnc_spawnCivilians);
     };
 
