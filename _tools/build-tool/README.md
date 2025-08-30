@@ -58,11 +58,11 @@ Every `Preset` entry should have following structure:
     // These variables values will be set to corresponding value in <variables>
     "configFile": "KPLIB_config.sqf",
     "variables": {
-        "KPLIB_preset_blufor": 0,
-        "KPLIB_preset_opfor": 0,
-        "KPLIB_preset_resistance": 0,
-        "KPLIB_preset_civilians": 0,
-        "KPLIB_arsenal": 0
+        "KPLIB_presetPlayer": 0,
+        "KPLIB_presetEnemy": 0,
+        "KPLIB_presetResistance": 0,
+        "KPLIB_presetCivilians": 0,
+        "KPLIB_presetArsenal": 0
     }
 }
 ```

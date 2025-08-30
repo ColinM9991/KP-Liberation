@@ -21,7 +21,8 @@
 
 // Access to the commander slot.
 KPLIB_whitelist_cmdrSlot = [
-
+	"76561198035681655/",
+	"76561198038993862"
 ];
 
 // Access the commander actions (rights, production, etc.), even if the corresponding player is not in the commander slot.

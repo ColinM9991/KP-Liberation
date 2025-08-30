@@ -1,3 +1,6 @@
+KPLIB_use_liberation_civilians = !(isClass (configfile >> "CfgPatches" >> "grad_civs_main"));
+publicVariable "KPLIB_use_liberation_civilians";
+
 // AI
 add_civ_waypoints = compile preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
 add_defense_waypoints = compile preprocessFileLineNumbers "scripts\server\ai\add_defense_waypoints.sqf";
@@ -15,7 +18,6 @@ spawn_battlegroup = compile preprocessFileLineNumbers "scripts\server\battlegrou
 check_victory_conditions = compile preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
 
 // Patrol
-manage_one_civilian_patrol = compile preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
 manage_one_patrol = compile preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
 reinforcements_manager = compile preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compile preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
@@ -54,7 +56,12 @@ execVM "scripts\server\game\synchronise_vars.sqf";
 execVM "scripts\server\game\synchronise_eco.sqf";
 execVM "scripts\server\game\zeus_synchro.sqf";
 execVM "scripts\server\offloading\show_fps.sqf";
-execVM "scripts\server\patrols\civilian_patrols.sqf";
+if (KPLIB_use_liberation_civilians) then {
+	manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
+	execVM "scripts\server\patrols\civilian_patrols.sqf";
+} else {
+    execVM "scripts\server\patrols\init_grad_civs.sqf";
+};
 execVM "scripts\server\patrols\manage_patrols.sqf";
 execVM "scripts\server\patrols\reinforcements_resetter.sqf";
 if (KPLIB_param_logistic) then {execVM "scripts\server\resources\manage_logistics.sqf";};

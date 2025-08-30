@@ -86,7 +86,6 @@ class liberation_build {
     class BuildInfantryButton: BuildTypeButton {
         idc = 102;
         text = "";
-        action = "buildtype=1";
         x = (0.4 * safezoneW + safezoneX);
     };
     class BuildTransportVehicleImage: BuildTypeImage {
@@ -97,7 +96,6 @@ class liberation_build {
     class BuildTransportVehicleButton: BuildTypeButton{
         idc = 103;
         text = "";
-        action = "buildtype=2";
         x = (0.425 * safezoneW + safezoneX);
     };
     class BuildCombatVehicleImage: BuildTypeImage {
@@ -108,7 +106,6 @@ class liberation_build {
     class BuildCombatVehicleButton: BuildTypeButton{
         idc = 104;
         text = "";
-        action = "buildtype=3";
         x = (0.45 * safezoneW + safezoneX);
     };
     class BuildAerialImage: BuildTypeImage {
@@ -119,7 +116,6 @@ class liberation_build {
     class BuildAerialButton: BuildTypeButton {
         idc = 105;
         text = "";
-        action = "buildtype=4";
         x = (0.475 * safezoneW + safezoneX);
     };
     class BuildDefenceImage: BuildTypeImage {
@@ -130,7 +126,6 @@ class liberation_build {
     class BuildDefenceButton: BuildTypeButton{
         idc = 1106;
         text = "";
-        action = "buildtype=5";
         x = (0.5 * safezoneW + safezoneX);
     };
     class BuildBuildingImage: BuildTypeImage {
@@ -141,7 +136,6 @@ class liberation_build {
     class BuildBuildingButton: BuildTypeButton {
         idc = 109;
         text = "";
-        action = "buildtype=6";
         x = (0.525 * safezoneW + safezoneX);
     };
     class BuildSupportImage: BuildTypeImage {
@@ -152,7 +146,6 @@ class liberation_build {
     class BuildSupportButton: BuildTypeButton {
         idc = 107;
         text = "";
-        action = "buildtype=7";
         x = (0.55 * safezoneW + safezoneX);
     };
     class BuildSquadImage: BuildTypeImage {
@@ -163,7 +156,6 @@ class liberation_build {
     class BuildSquadButton: BuildTypeButton {
         idc = 108;
         text = "";
-        action = "buildtype=8";
         x = (0.575 * safezoneW + safezoneX);
     };
 
@@ -281,7 +273,6 @@ class liberation_build {
         h = (0.045 * safezoneH);
         sizeEx = 0.03 * safezoneH;
         text = $STR_BUILD_BUTTON;
-        action = "dobuild = 1;";
     };
     class BuildMannedButton: StdButton {
         idc = 121;
@@ -291,7 +282,6 @@ class liberation_build {
         h = (0.045 * safezoneH);
         sizeEx = 0.02 * safezoneH;
         text = $STR_BUILD_CREW;
-        action = "dobuild = 1; manned = true;";
     };
     class LinkedSector {
         idc = 161;
