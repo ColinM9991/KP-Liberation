@@ -28,15 +28,8 @@ while {true} do {
         _informant setPos (selectRandom (_house buildingPos -1));
         _informant setUnitPos "UP";
         sleep 1;
-        if (KPLIB_ace) then {
-            ["ace_captives_setSurrendered", [_informant, true], _informant] call CBA_fnc_targetEvent;
-        } else {
-            _informant disableAI "ANIM";
-            _informant disableAI "MOVE";
-            _informant playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
-            sleep 2;
-            _informant setCaptive true;
-        };
+        
+        [_informant] call KPLIB_fnc_setCaptive;
 
         if (KPLIB_civinfo_debug > 0) then {[format ["Informant %1 spawned on: %2 - Position: %3", name _informant, debug_source, getPos _informant], "CIVINFO"] remoteExecCall ["KPLIB_fnc_log", 2];};
 

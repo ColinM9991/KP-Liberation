@@ -41,6 +41,7 @@ if !(_sector in KPLIB_sectorIntelSpawned) then {
             for "_i" from 1 to _amount do {
                 _spawnPos = _positions deleteAt (floor random (count _positions));
                 _obj = (selectRandom KPLIB_intelObjectClasses) createVehicle _spawnPos;
+                _obj addAction ["<t color='#FFFF00'>" + localize "STR_INTEL" + "</t>", {[_this select 0] remoteExecCall ["intel_remote_call", 2];}, "", -849, true, true, "", "(vehicle player == player) && { [5] call KPLIB_fnc_hasPermission }", 5];
                 _obj setdir (random 360);
                 _obj setPosATL _spawnPos;
                 _obj allowDamage false;
