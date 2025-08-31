@@ -39,17 +39,11 @@ private _getItemDisplayName = {
     };
 };
 
-private _getSquadDisplayName = {
-    params["_itemIndex"];
-
-    squads_names select _itemIndex;
-};
-
 private _displayName = "";
 private _icon = "";
 
 if(_className isEqualType []) then { 
-    _displayName = [_itemIndex] call _getSquadDisplayName;
+    _displayName = KPLIB_b_squadNames select _itemIndex;
 } else {
     _displayName = [_className] call _getItemDisplayName;
     _icon = getText (configFile >> "CfgVehicles" >> _className >> "icon");

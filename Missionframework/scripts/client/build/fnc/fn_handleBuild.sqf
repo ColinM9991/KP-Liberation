@@ -36,7 +36,7 @@ params[
 
 private _nearestFob = [] call KPLIB_fnc_getNearestFob;
 private _processPurchase = {
-    private _storageAreas = (_nearestFob nearObjects (KPLIB_range_fob * 2)) select {(_x getVariable ["KPLIB_storageType",-1]) == 0};
+    private _storageAreas = (_nearestFob nearObjects (KPLIB_range_fob * 2)) select {(_x getVariable ["KPLIB_storage_type",-1]) == 0};
 
     [_supplyCost, _ammoCost, _fuelCost, _className, _buildType, _storageAreas] remoteExec ["build_remote_call",2];
 };

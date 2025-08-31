@@ -21,7 +21,7 @@
 
 // Access to the commander slot.
 KPLIB_whitelist_cmdrSlot = [
-	"76561198035681655/",
+	"76561198035681655",
 	"76561198038993862"
 ];
 
