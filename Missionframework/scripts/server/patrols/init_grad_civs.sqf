@@ -15,17 +15,14 @@
     Returns:
         NONE
 */
-["grad_civs_civKilled", {
-    params ["", "_killer", "_civilian"];
 
-    ["KPLIB_manageKills", [_civilian, _killer]] call CBA_fnc_localEvent;
-}] call CBA_fnc_addEventHandler;
+{
+    [_x, {
+        params ["", "_killer", "_victim"];
 
-["grad_civs_cars_vehKilled", {
-    params ["", "_killer", "_vehicle"];
-
-    ["KPLIB_manageKills", [_vehicle, _killer]] call CBA_fnc_localEvent;
-}] call CBA_fnc_addEventHandler;
+        ["KPLIB_manageKills", [_victim, _killer]] call CBA_fnc_localEvent;
+    }] call CBA_fnc_addEventHandler;
+} forEach ["grad_civs_civKilled", "grad_civs_cars_vehKilled"];
 
 ["CBA_SettingsInitialized", {
     [format["Initializing Civilians %1 %2", KPLIB_c_units, KPLIB_c_vehicles], "GRAD CIVS"] call KPLIB_fnc_log;
@@ -34,18 +31,12 @@
 }] call CBA_fnc_addEventHandler;
 
 waitUntil {!isNil "KPLIB_sectors_fob"};
-waitUntil {!isNil "sectors_military"};
-waitUntil {!isNil "sectors_factory"};
-waitUntil {!isNil "sectors_tower"};
-
-grad_civs_common_exclusion_zones = [];
-_excludedZones = [];
-{
-    _excludedZones pushBack (getMarkerPos _x);
-} forEach (["startbase_marker"] + sectors_military + sectors_tower + sectors_factory);
+waitUntil {!isNil "KPLIB_sectors_military"};
+waitUntil {!isNil "KPLIB_sectors_factory"};
+waitUntil {!isNil "KPLIB_sectors_tower"};
 
 {
-    [[_x, 200, 200, 0, false]] call grad_civs_common_fnc_addExclusionZone; 
-} forEach (_excludedZones + KPLIB_sectors_fob);
+    [[(getMarkerPos _x), 200, 200, 0, false]] call grad_civs_common_fnc_addExclusionZone; 
+} forEach (["startbase_marker"] + KPLIB_sectors_military + KPLIB_sectors_tower + KPLIB_sectors_factory);
 
-publicVariable "grad_civs_common_exclusion_zones";
+[format["Initialized GRAD CIVS with exclusion zones: %1", grad_civs_common_exclusion_zones], "GRAD CIVS"] call KPLIB_fnc_log;
