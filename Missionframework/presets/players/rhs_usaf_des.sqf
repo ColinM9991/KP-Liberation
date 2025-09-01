@@ -2,7 +2,7 @@
     File: rhs_usaf_des.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-12-09
-    Last Update: 2020-05-25
+    Last Update: 2025-09-01
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -194,7 +194,8 @@ KPLIB_b_vehStatic = [
     ["RHS_Stinger_AA_pod_D",50,100,0],                                  // Stinger (AA)
     ["RHS_M252_D",80,150,0],                                            // Mk6 Mortar
     ["RHS_M119_D",100,200,0],                                           // M119A2
-    ["B_SAM_System_03_F",250,500,0]                                     // MIM-145 Defender
+    ["B_SAM_System_03_F",250,500,0],                                    // MIM-145 Defender
+    ["B_Radar_System_01_F",500,0,0]                                     // Radar
 ];
 
 KPLIB_b_objectsDeco = [

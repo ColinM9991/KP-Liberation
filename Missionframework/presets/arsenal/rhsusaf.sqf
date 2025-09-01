@@ -2,7 +2,7 @@
     File: rhsusaf.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-16
-    Last Update: 2020-05-11
+    Last Update: 2025-09-01
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -953,6 +953,7 @@ KPLIB_arsenalItems = [
     "ACE_wirecutter",                                               // Wirecutter
     "ACE_Yardage450",                                               // Yardage 450
     "ACE_SpareBarrel",                                              // Spare Barrel
+    "B_UavTerminal",                                                // UAV Terminal [NATO]
 
     // ACRE Items
     "ACRE_PRC117F",                                                 // AN/PRC-117F
