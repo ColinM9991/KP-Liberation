@@ -61,7 +61,7 @@ if (alive _unit) then {
         _grp = createGroup [KPLIB_side_enemy, true];
         [_unit] joinSilent _grp;
         _unit setUnitPos "AUTO";
-        [_unit, false] call KPLIB_fnc_setCaptive;
+        _unit setCaptive false;
 
         if ((vehicle _unit != _unit) && !(_unit isEqualTo (driver vehicle _unit))) then {
             unAssignVehicle _unit;

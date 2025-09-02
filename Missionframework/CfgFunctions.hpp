@@ -70,7 +70,6 @@ class KPLIB {
         class potatoScan                {};
         class protectObject             {};
         class secondsToTimer            {};
-        class setCaptive                {};
         class setDiscordState           {};
         class setFobMass                {};
         class setLoadableViV            {};

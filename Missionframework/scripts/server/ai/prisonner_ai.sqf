@@ -24,14 +24,27 @@ if ((_unit isKindOf "Man") && (alive _unit) && (side group _unit == KPLIB_side_e
         sleep 1;
         private _grp = createGroup [KPLIB_side_civilian, true];
         [_unit] joinSilent _grp;
-        [_unit] call KPLIB_fnc_setCaptive;
-
+        if (KPLIB_ace) then {
+            ["ace_captives_setSurrendered", [_unit, true], _unit] call CBA_fnc_targetEvent;
+        } else {
+            _unit disableAI "ANIM";
+            _unit disableAI "MOVE";
+            _unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+            sleep 2;
+            _unit setCaptive true;
+        };
         waitUntil {sleep 1;
             !alive _unit || side group _unit == KPLIB_side_player
         };
 
         if (alive _unit) then {
-            [_unit, false] call KPLIB_fnc_setCaptive;
+            if (KPLIB_ace) then {
+                ["ace_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
+            } else {
+                _unit enableAI "ANIM";
+                _unit enableAI "MOVE";
+                _unit setCaptive false;
+            };
             sleep 1;
             [_unit] remoteExec ["remote_call_prisonner", _unit];
         };
