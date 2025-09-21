@@ -1,5 +1,3 @@
-scriptName "do_build_fob";
-
 private [ "_minfobdist", "_minsectordist", "_distfob", "_clearedtobuildfob", "_distsector", "_clearedtobuildsector", "_idx" ];
 
 if ( count KPLIB_sectors_fob >= KPLIB_param_maxFobs ) exitWith {
@@ -46,8 +44,7 @@ if (!_clearedtobuildfob) then {
         FOB_build_in_progress = false;
         publicVariable "FOB_build_in_progress";
     } else {
-        buildtype = 99;
-        dobuild = 1;
         deleteVehicle (_this select 0);
+        [KPLIB_b_fobBuilding, 0, 0, 0, 99, false] call KPLIB_fnc_handleBuild;
     };
 };

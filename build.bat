@@ -18,5 +18,4 @@ call npx gulp
 
 echo.
 
-pause
-exit /b
+cd %~dp0

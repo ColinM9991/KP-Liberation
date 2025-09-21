@@ -111,7 +111,15 @@ if (KPLIB_param_useArsenalPreset) then {
     } forEach KPLIB_arsenalAllowed;
 
     KPLIB_arsenalAllowed append KPLIB_arsenalAllowedExtension;
-    if (KPLIB_ace && KPLIB_param_arsenalType) then {[player, KPLIB_arsenalAllowed, false] call ace_arsenal_fnc_addVirtualItems;};
+    if (KPLIB_ace && KPLIB_param_arsenalType) then {
+        if (isNil "ACE_arsenal_defaults") then {ACE_arsenal_defaults = []};
+        
+        [player, KPLIB_arsenalAllowed, false] call ace_arsenal_fnc_addVirtualItems;
+
+        {
+            [_x select 0, _x select 1] call ace_arsenal_fnc_addDefaultLoadout;
+        } forEach ACE_arsenal_defaults;
+    };
 
     // Lowering to avoid issues with incorrect capitalized classnames in KPLIB_fnc_checkGear
     KPLIB_arsenalAllowed = KPLIB_arsenalAllowed apply {toLower _x};

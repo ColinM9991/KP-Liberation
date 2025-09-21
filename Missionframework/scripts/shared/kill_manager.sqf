@@ -80,6 +80,8 @@ params ["_unit", "_killer"];
             };
         };
 
+        private _wasKilledByPlayer = isPlayer _killer && { side _killer == KPLIB_side_player };
+
         // Resistance casualty
         if (side (group _unit) == KPLIB_side_resistance) then {
             KPLIB_guerilla_strength = KPLIB_guerilla_strength - 1;
@@ -88,16 +90,12 @@ params ["_unit", "_killer"];
             // Resistance is friendly to BLUFOR
             if ((KPLIB_side_player getFriend KPLIB_side_resistance) >= 0.6) then {
 
-                // Killed by BLUFOR
-                if (side _killer == KPLIB_side_player) then {
+                // Killed by BLUFOR player
+                if (_wasKilledByPlayer) then {
                     if (KPLIB_asymmetric_debug > 0) then {[format ["Guerilla unit killed by: %1", name _killer], "ASYMMETRIC"] call KPLIB_fnc_log;};
                     [3, [(name _unit)]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
                     stats_resistance_teamkills = stats_resistance_teamkills + 1;
                     [KPLIB_cr_resistance_penalty, true] spawn F_cr_changeCR;
-                };
-
-                // Killed by a player
-                if (isplayer _killer) then {
                     stats_resistance_teamkills_by_players = stats_resistance_teamkills_by_players + 1;
                 };
             };
@@ -105,17 +103,13 @@ params ["_unit", "_killer"];
 
         // Civilian casualty
         if (side (group _unit) == KPLIB_side_civilian) then {
-            stats_civilians_killed = stats_civilians_killed + 1;
 
-            // Killed by BLUFOR
-            if (side _killer == KPLIB_side_player) then {
+            // Killed by BLUFOR player
+            if (_wasKilledByPlayer) then {
                 if (KPLIB_civrep_debug > 0) then {[format ["Civilian killed by: %1", name _killer], "CIVREP"] call KPLIB_fnc_log;};
                 [2, [(name _unit)]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
+                stats_civilians_killed = stats_civilians_killed + 1;
                 [KPLIB_cr_kill_penalty, true] spawn F_cr_changeCR;
-            };
-
-            // Killed by a player
-            if (isPlayer _killer) then {
                 stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
             };
         };
@@ -148,6 +142,7 @@ params ["_unit", "_killer"];
     if (!isPlayer _unit) then {
         [{
             params ["_unit"];
+            if((side (group _unit) == KPLIB_side_civilian) && !KPLIB_use_liberation_civilians) exitWith {};
             if (_unit isKindOf "CAManBase") exitWith {
                 hideBody _unit;
             };

@@ -100,5 +100,7 @@ class KPLIB {
         class overlayUpdateResources    {};
     };
     #include "scripts\client\CfgFunctions.hpp"
+    #include "scripts\client\build\CfgFunctions.hpp"
+    #include "scripts\client\build\ui\CfgFunctions.hpp"
     #include "scripts\server\CfgFunctions.hpp"
 };

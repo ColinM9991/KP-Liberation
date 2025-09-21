@@ -35,7 +35,7 @@ if (KPLIB_saveLoaded && {(KPLIB_clearances findIf {(_x select 0) isEqualTo _cent
     _x switchLight "OFF";
     _x hideObjectGlobal true;
     _x allowDamage false;
-} forEach (nearestTerrainObjects [_centerPos, [], _radius, false, true]);
+} forEach (nearestTerrainObjects [_centerPos, ["TREE", "SMALL TREE", "BUSH", "ROCK", "ROCKS"], _radius, false, true]);
 
 if (_save) then {
     KPLIB_clearances pushBackUnique [_centerPos, _radius];

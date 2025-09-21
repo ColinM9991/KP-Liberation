@@ -97,6 +97,23 @@ KPLIB_objectInits = [
         KPLIB_medical_vehicles,
         {_this setVariable ["ace_medical_isMedicalVehicle", true, true];}
     ],
+    
+    // Switch on AA radars
+    [
+        ["B_Radar_System_01_F"],
+        {
+            _this setVehicleRadar 1;
+        }
+    ],
+
+    // Lock SAM allSites
+    [
+        ["B_Radar_System_01_F", "B_SAM_System_03_F"],
+        {
+            _this setVehicleLock "LOCKED";
+            _this lockDriver true;
+        }
+    ],
 
     // Hide Cover on big GM trucks
     [
