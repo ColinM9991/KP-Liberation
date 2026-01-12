@@ -95,9 +95,9 @@
         "configFile": "KPLIB_config.sqf",
         "variables": {
             "KPLIB_presetPlayer": 7,
-            "KPLIB_presetEnemy": 4,
-            "KPLIB_presetResistance": 3,
-            "KPLIB_presetCivilians": 2,
+            "KPLIB_presetEnemy": 14,
+            "KPLIB_presetResistance": 7,
+            "KPLIB_presetCivilians": 6,
             "KPLIB_presetArsenal": 2
         },
         "workshopId": "1226882826"
