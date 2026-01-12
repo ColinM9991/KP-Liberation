@@ -2,7 +2,7 @@
     File: fn_handleBuild.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-08-01
-    Last Update: 2022-08-11
+    Last Update: 2025-09-21
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -149,11 +149,11 @@ while { KPLIB_buildingInProgress } do {
         KPLIB_isBuilding = false;
     };
 
-    if (_className isEqualTo KPLIB_b_fobBuilding) exitWith { 
-        [(getPos player), false] remoteExec ["build_fob_remote_call",2];
-    };
-
     [_className, _vehicle, _buildType, _buildManned] call KPLIB_fnc_buildItem;
+
+    if (KPLIB_buildType == BUILD_TYPE_FOB) exitWith { 
+        [(getPos _vehicle), false] remoteExec ["build_fob_remote_call",2];
+    };
 
     call _processPurchase;
 };
