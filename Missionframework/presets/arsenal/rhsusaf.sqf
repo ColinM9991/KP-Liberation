@@ -2,7 +2,7 @@
     File: rhsusaf.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-16
-    Last Update: 2025-09-01
+    Last Update: 2026-01-13
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -954,6 +954,7 @@ KPLIB_arsenalItems = [
     "ACE_Yardage450",                                               // Yardage 450
     "ACE_SpareBarrel",                                              // Spare Barrel
     "B_UavTerminal",                                                // UAV Terminal [NATO]
+    "Laserbatteries",
 
     // ACRE Items
     "ACRE_PRC117F",                                                 // AN/PRC-117F
@@ -998,6 +999,8 @@ KPLIB_arsenalBackpacks = [
     "B_Kitbag_rgr",                                                 // Kitbag (Green)
     "B_Kitbag_tan",                                                 // Kitbag (Tan)
     "B_Parachute",                                                  // Steerable Parachute
+    "B_Mortar_01_support_F",                                        // Folded Mk6 Mortar Bipod [NATO]
+    "B_Mortar_01_weapon_F",                                         // Folded Mk6 Mortar Tube [NATO] 
 
     // ACE Backpacks
     "ace_gunbag_Tan",                                               // Gunbag (Tan)
