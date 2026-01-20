@@ -2,7 +2,7 @@
     File: fn_isSectorLocked.sqf
     Author: ColinM https://github.com/ColinM9991/KP-Liberation
     Date: 2022-07-28
-    Last Update: 2022-07-28
+    Last Update: 2026-01-24
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:

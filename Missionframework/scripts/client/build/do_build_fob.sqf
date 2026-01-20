@@ -45,6 +45,6 @@ if (!_clearedtobuildfob) then {
         publicVariable "FOB_build_in_progress";
     } else {
         deleteVehicle (_this select 0);
-        [KPLIB_b_fobBuilding, 0, 0, 0, 99, false] call KPLIB_fnc_handleBuild;
+        [KPLIB_b_fobBuilding, getPos player, 99] call KPLIB_fnc_build_beginSingle;
     };
 };

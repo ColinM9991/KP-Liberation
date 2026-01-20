@@ -177,7 +177,7 @@ KPLIB_o_squadAir        = [KPLIB_o_squadLeader, KPLIB_o_medic, KPLIB_o_machinegu
 /*
     Liberation specific collections
 */
-KPLIB_buildList         = [[], KPLIB_b_infantry, KPLIB_b_vehLight, KPLIB_b_vehHeavy, KPLIB_b_vehAir, KPLIB_b_vehStatic, KPLIB_b_objectsDeco, KPLIB_b_vehSupport, KPLIB_b_allSquads];
+KPLIB_buildList         = [KPLIB_b_infantry, KPLIB_b_vehLight, KPLIB_b_vehHeavy, KPLIB_b_vehAir, KPLIB_b_vehStatic, KPLIB_b_objectsDeco, KPLIB_b_vehSupport];
 KPLIB_crates            = [KPLIB_b_crateSupply, KPLIB_b_crateAmmo, KPLIB_b_crateFuel];
 KPLIB_airSlots          = [KPLIB_b_slotHeli, KPLIB_b_slotPlane];
 KPLIB_storageBuildings  = [KPLIB_b_smallStorage, KPLIB_b_largeStorage];

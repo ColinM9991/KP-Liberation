@@ -1,3 +1,40 @@
+import RscObject;
+import RscText;
+import RscFrame;
+import RscLine;
+import RscProgress;
+import RscPicture;
+import RscPictureKeepAspect;
+import RscVideo;
+import RscHTML;
+import RscButton;
+import RscShortcutButton;
+import RscEdit;
+import RscCombo;
+import RscListBox;
+import RscListNBox;
+import RscXListBox;
+import RscTree;
+import RscSlider;
+import RscXSliderH;
+import RscActiveText;
+import RscActivePicture;
+import RscActivePictureKeepAspect;
+import RscStructuredText;
+import RscToolbox;
+import RscControlsGroup;
+import RscControlsGroupNoScrollbars;
+import RscControlsGroupNoHScrollbars;
+import RscControlsGroupNoVScrollbars;
+import RscButtonTextOnly;
+import RscButtonMenu;
+import RscButtonMenuOK;
+import RscButtonMenuCancel;
+import RscButtonMenuSteam;
+import RscMapControl;
+import RscMapControlEmpty;
+import RscCheckBox;
+
 class kndr_MapControl {
     idc = 10023;
     type = CT_MAP_MAIN;
@@ -330,15 +367,7 @@ class kndr_MapControl {
         coefMax = 1.00;
     };
 };
-class RscText {
-        type = CT_STATIC;
-        idc = -1;
-        style = ST_LEFT;
-        colorBackground[] = {0, 0, 0, 0};
-        colorText[] = {1, 1, 1, 1};
-        font = "Bitstream";
-        sizeEx = 0.04;
-};
+
 class StdText {
     idc = -1;
     type =  CT_STATIC;
