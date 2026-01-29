@@ -2,7 +2,7 @@
     File: fn_build_beginSingle.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-01-25
+    Last Update: 2026-01-30
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -45,7 +45,4 @@ private _display = GVAR(display);
 	BUILD_PANEL_RIGHT,
 	BUILD_PANEL_LEFT_HEADER,
 	BUILD_PANEL_RIGHT_HEADER,
-	BUILD_BUTTON_CANCEL,
-	BUILD_LIST_IDC,
-	BUILD_CART_IDC,
-	BUILD_CATEGORY_IDC];
+	BUILD_HEADER_RESOURCES];

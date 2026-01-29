@@ -2,7 +2,7 @@
     File: defines.hpp
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-20
-    Last Update: 2026-01-25
+    Last Update: 2026-01-30
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -10,36 +10,38 @@
 */
 #include "defines.hpp"
 
-// Base positioning from safeZone
-#define PANEL_X (safeZoneX + PANEL_OFFSET * GRID_W)
-#define PANEL_Y (safeZoneY + PANEL_OFFSET * GRID_H)
-
-// Right panel positioning
-#define PANEL_RIGHT_X (safeZoneX + safeZoneW - PANEL_W - PANEL_OFFSET * GRID_W)
-#define PANEL_RIGHT_END (PANEL_RIGHT_X + PANEL_W)
-
-// Panel dimensions
-#define PANEL_W (80 * GRID_W)
-#define PANEL_H (safeZoneH - (PANEL_OFFSET * 2) * GRID_H)
-#define PANEL_OFFSET 10
-
 // Component dimensions
 #define BUTTON_WIDTH (20 * GRID_W)
 #define BUTTON_HEIGHT (5 * GRID_H)
 #define HEADER_HEIGHT (5 * GRID_H)
 #define COMBO_HEIGHT (5 * GRID_H)
+#define TEXT_HEIGHT (10 * GRID_H)
 #define SPACING (2 * GRID_H)
+#define ITEM_INFORMATION_HEIGHT (15 * GRID_H)
 
-// Calculated Y positions (stacking elements vertically)
-#define HEADER_Y PANEL_Y
-#define COMBO_Y (HEADER_Y + HEADER_HEIGHT + SPACING)
-#define LIST_Y (COMBO_Y + COMBO_HEIGHT + SPACING)
-#define LIST_H (PANEL_Y + PANEL_H - LIST_Y - BUTTON_HEIGHT - SPACING * 2)
-#define BUTTON_Y (PANEL_Y + PANEL_H - BUTTON_HEIGHT - SPACING)
+// Panel dimensions
+#define VERTICAL_OFFSET 5
+#define HORIZONTAL_OFFSET 8
+#define PANEL_W (80 * GRID_W)
+#define PANEL_H (safeZoneH - (VERTICAL_OFFSET * 2) * GRID_H)
+#define MIDDLE_X (BUILD_GROUP_X + PANEL_W)
+#define MIDDLE_W ((CART_GROUP_X - MIDDLE_X) - pixelW)
+
+#define BUILD_GROUP_X (safeZoneX + HORIZONTAL_OFFSET * GRID_W)
+#define CART_GROUP_X (safeZoneX + safeZoneW - PANEL_W - HORIZONTAL_OFFSET * GRID_W)
+#define HEADER_Y (safeZoneY + VERTICAL_OFFSET * GRID_H)
+
+#define GROUP_Y HEADER_Y + HEADER_HEIGHT
+#define GROUP_H PANEL_H - HEADER_HEIGHT
+
+// Relative positioning in group
+#define BUILD_LIST_Y COMBO_HEIGHT
+#define BUILD_LIST_H GROUP_H - COMBO_HEIGHT - ITEM_INFORMATION_HEIGHT
+#define CART_LIST_H (GROUP_H - BUTTON_HEIGHT - SPACING)
+#define BUTTON_Y (CART_LIST_H + SPACING)
+#define SECTOR_INFO_Y (BUILD_LIST_Y + BUILD_LIST_H + ((ITEM_INFORMATION_HEIGHT - TEXT_HEIGHT) / 2))
 
 #define CALC_BUTTON(REL, IDX) (REL - (BUTTON_WIDTH * IDX) - (SPACING * IDX))
-
-#define TASKBAR_COLOR {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"}
 
 class RscBuildDialog
 {
@@ -47,106 +49,169 @@ class RscBuildDialog
 	movingEnable = 0;
 
 	onLoad = "call KPLIB_fnc_build_onDisplayLoad;";
-    onKeyUp = "[false, _this] call KPLIB_fnc_build_handleKeys";
     onKeyDown = "[true, _this] call KPLIB_fnc_build_handleKeys";
 
 	class controlsBackground
 	{
-		class LeftPanel : RscText
+		class MouseHandler : RscStructuredText
 		{
-			idc = BUILD_PANEL_LEFT;
-			x = PANEL_X;
-			y = PANEL_Y;
-			w = PANEL_W;
-			h = PANEL_H;
-			colorBackground[] = {0, 0, 0, 0.8};
-		};
-
-		class RightPanel : LeftPanel
-		{
-			idc = BUILD_PANEL_RIGHT;
-			x = PANEL_RIGHT_X;
-		};
-
-		class LeftPanelHeader : RscText
-		{
-			idc = BUILD_PANEL_LEFT_HEADER;
-			text = "Build Menu";
-			x = PANEL_X;
-			y = HEADER_Y;
-			w = PANEL_W;
-			h = HEADER_HEIGHT;
-			colorBackground[] = TASKBAR_COLOR;
-			style = ST_CENTER;
-		};
-
-		class RightPanelHeader : LeftPanelHeader
-		{
-			idc = BUILD_PANEL_RIGHT_HEADER;
-			text = "Cart";
-			x = PANEL_RIGHT_X;
-		};
-
-		class MouseHandler : RscControlsGroupNoScrollbars
-		{
-			idc = BUILD_MOUSE_TRACKER;
+			idc = -1;
 			x = safeZoneX;
 			y = safeZoneY;
 			w = safeZoneW;
 			h = safeZoneH;
-			onMouseHolding = "['onMouseHolding', _this] call KPLIB_fnc_build_handleMouse;";
 			onMouseMoving = "['onMouseMoving', _this] call KPLIB_fnc_build_handleMouse;";
 			onMouseButtonDown = "['onMouseButtonDown', _this] call KPLIB_fnc_build_handleMouse;";
 			onMouseButtonUp = "['onMouseButtonUp', _this] call KPLIB_fnc_build_handleMouse;";
+			onMouseEnter = "['onMouseEnter', _this] call KPLIB_fnc_build_handleMouse;";
+			onMouseExit = "['onMouseExit', _this] call KPLIB_fnc_build_handleMouse;";
+			colorBackground[] = {0, 0, 0, 0};
+		};
+
+		class ResourcesInformation : RscStructuredText {
+			idc = BUILD_HEADER_RESOURCES;
+			x = MIDDLE_X;
+			y = HEADER_Y;
+			w = MIDDLE_W;
+			h = HEADER_HEIGHT;
+			colorBackground[] = {0, 0, 0, 0.5};
+
+			class Attributes {
+				align = "center";
+			}
 		};
 	};
 
 	class controls
 	{
-		class BuildMenuType : RscCombo
+		class LeftPanelHeader : RscButton
 		{
-			idc = BUILD_CATEGORY_IDC;
-			x = PANEL_X;
-			y = COMBO_Y;
+			idc = BUILD_PANEL_LEFT_HEADER;
+			text = "Build";
+			x = BUILD_GROUP_X;
+			y = HEADER_Y;
 			w = PANEL_W;
-			h = COMBO_HEIGHT;
+			h = HEADER_HEIGHT;
+			onButtonClick = "[_this select 0, 3000] call KPLIB_fnc_build_togglePanel;";
 		};
 
-		class BuildItemsList : RscListNBox
+		class RightPanelHeader : RscButton
 		{
-			idc = BUILD_LIST_IDC;
-			x = PANEL_X;
-			y = LIST_Y;
+			idc = BUILD_PANEL_RIGHT_HEADER;
+			text = "Cart";
+			x = CART_GROUP_X;
+			y = HEADER_Y;
 			w = PANEL_W;
-			h = LIST_H;
-    		columns[] = {0, 0.65, 0.75, 0.85};
+			h = HEADER_HEIGHT;
+			onButtonClick = "[_this select 0, 4000] call KPLIB_fnc_build_togglePanel;";
 		};
 
-		class CartItemsList : BuildItemsList
+		class LeftPanel : RscControlsGroupNoScrollbars
 		{
-			idc = BUILD_CART_IDC;
-			x = PANEL_RIGHT_X;
+			idc = BUILD_PANEL_LEFT;
+			x = BUILD_GROUP_X;
+			y = GROUP_Y;
+			w = PANEL_W;
+			h = GROUP_H;
+
+			class controls {
+				class LeftPanel : RscText
+				{
+					idc = -1;
+					x = 0;
+					y = 0;
+					w = PANEL_W;
+					h = GROUP_H;
+					colorBackground[] = {0, 0, 0, 0.25};
+				};
+
+				class SectorText : RscStructuredText {
+					idc = BUILD_PANEL_LEFT_SECTOR_INFORMATION;
+					x = 0;
+					y = SECTOR_INFO_Y;
+					w = PANEL_W;
+					h = TEXT_HEIGHT;
+					class Attributes
+					{
+						align = "center";
+					};
+				};
+
+				class BuildMenuType : RscCombo
+				{
+					idc = BUILD_CATEGORY_IDC;
+					x = 0;
+					y = 0;
+					w = PANEL_W;
+					h = COMBO_HEIGHT;
+				};
+
+				class BuildItemsList : RscListNBox
+				{
+					idc = BUILD_LIST_IDC;
+					x = 0;
+					y = BUILD_LIST_Y;
+					w = PANEL_W;
+					h = BUILD_LIST_H;
+					idcLeft = 999; // Bug with ListNBox which hides controls if this IDC matches any other control IDC
+					idcRight = 999; // Bug with ListNBox which hides controls if this IDC matches any other control IDC
+					columns[] = {0, 0.65, 0.75, 0.85};
+				};
+			}
 		};
 
-		class ButtonCancel : RscButtonMenuCancel
+		class RightPanel : RscControlsGroupNoScrollbars
 		{
-			idc = BUILD_BUTTON_CANCEL;
-			x = CALC_BUTTON(PANEL_RIGHT_END, 2);
-			y = BUTTON_Y;
-			w = BUTTON_WIDTH;
-			h = BUTTON_HEIGHT;
-			onButtonClick = "[] call KPLIB_fnc_build_end;";
-		};
+			idc = BUILD_PANEL_RIGHT;
+			x = CART_GROUP_X;
+			y = GROUP_Y;
+			w = PANEL_W;
+			h = GROUP_H;
 
-		class ButtonConfirm : RscButtonMenuOK
-		{
-			idc = BUILD_BUTTON_CONFIRM;
-			x = CALC_BUTTON(PANEL_RIGHT_END, 1);
-			y = BUTTON_Y;
-			w = BUTTON_WIDTH;
-			h = BUTTON_HEIGHT;
-			text = "Confirm";
-			onButtonClick = "[] call KPLIB_fnc_build_confirmBuild;";
+			class controls {
+				class RightPanel : RscText
+				{
+					idc = -1;
+					x = 0;
+					y = 0;
+					w = PANEL_W;
+					h = GROUP_H;
+					colorBackground[] = {0, 0, 0, 0.25};
+				};
+
+				class CartItemsList : RscListNBox
+				{
+					idc = BUILD_CART_IDC;
+					x = 0;
+					y = 0;
+					w = PANEL_W;
+					h = CART_LIST_H;
+					idcLeft = 999; // Bug with ListNBox which hides controls if this IDC matches any other control IDC
+					idcRight = 999; // Bug with ListNBox which hides controls if this IDC matches any other control IDC
+					columns[] = {0, 0.65, 0.75, 0.85};
+				};
+
+				class ButtonCancel : RscButtonMenuCancel
+				{
+					idc = BUILD_BUTTON_CANCEL;
+					x = CALC_BUTTON(PANEL_W, 2);
+					y = BUTTON_Y;
+					w = BUTTON_WIDTH;
+					h = BUTTON_HEIGHT;
+					onButtonClick = "[] call KPLIB_fnc_build_end;";
+				};
+
+				class ButtonConfirm : RscButtonMenuOK
+				{
+					idc = BUILD_BUTTON_CONFIRM;
+					x = CALC_BUTTON(PANEL_W, 1);
+					y = BUTTON_Y;
+					w = BUTTON_WIDTH;
+					h = BUTTON_HEIGHT;
+					text = "Confirm";
+					onButtonClick = "[] call KPLIB_fnc_build_confirmBuild;";
+				};
+			}
 		};
 	};
 };

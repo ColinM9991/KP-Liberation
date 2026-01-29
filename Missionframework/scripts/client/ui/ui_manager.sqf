@@ -40,7 +40,7 @@ private _currentFob = "";
 
 while {true} do {
     _currentFob = player getVariable ["KPLIB_fobName", ""];
-    _showHud = alive player && {!dialog && {isNull curatorCamera && {!cinematic_camera_started && !halojumping}}};
+    _showHud = alive player && {!dialog && {isNull curatorCamera && {!cinematic_camera_started && !halojumping && !KPLIB_isBuilding}}};
     _visibleMap = visibleMap;
 
     if (_showHud && {!_overlayVisible}) then {

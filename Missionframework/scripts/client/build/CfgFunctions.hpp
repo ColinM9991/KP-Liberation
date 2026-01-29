@@ -26,6 +26,7 @@ class Build {
     class build_isSectorLocked      {};
     class build_refreshBuildList    {};
     class build_isVehicleAllowed    {};
+    class build_togglePanel         {};
     class build_preInit {
         preInit = 1;
     };

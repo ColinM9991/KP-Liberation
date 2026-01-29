@@ -2,7 +2,7 @@
     File: fn_build_end.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-01-25
+    Last Update: 2026-01-31
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -26,7 +26,9 @@ private _display = GVAR(display);
 removeMissionEventHandler ["Draw3D", _drawHandler];
 
 if (!(isNull _camera)) then {
-	camDestroy _camera;
+    camUseNVG false;
+	_camera cameraEffect ["terminate","back"];
+    camDestroy _camera;
 };
 
 private _objectsToClean = [];
@@ -52,3 +54,5 @@ if (!(isNull _display)) then {
 };
 
 KPLIB_buildLogic call CBA_fnc_deleteNamespace;
+
+KPLIB_isBuilding = false;

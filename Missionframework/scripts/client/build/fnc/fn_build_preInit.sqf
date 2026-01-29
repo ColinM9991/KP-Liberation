@@ -2,7 +2,7 @@
     File: fn_build_preInit.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-01-26
+    Last Update: 2026-01-30
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -54,4 +54,6 @@ if (hasInterface) then {
 
 		[] call KPLIB_fnc_build_refreshBuildList;
 	}] call CBA_fnc_addEventHandler;
-}
+};
+
+KPLIB_isBuilding = false;

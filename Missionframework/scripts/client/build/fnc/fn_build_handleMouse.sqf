@@ -109,4 +109,11 @@ switch _eventType do {
             }
         }
     };
+    case "onMouseExit";
+    case "onMouseEnter": {
+        private _onOrOff = if (_eventType isEqualTo "onMouseEnter") then [{"on"}, {"off"}];
+        private _camera = GVAR(camera);
+
+        _camera camCommand format["manual %1", _onOrOff];
+    }
 }

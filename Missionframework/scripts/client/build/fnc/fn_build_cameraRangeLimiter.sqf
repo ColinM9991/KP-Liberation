@@ -2,7 +2,7 @@
     File: fn_build_cameraRangeLimiter.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-23
-    Last Update: 2026-01-25
+    Last Update: 2026-01-27
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -38,7 +38,6 @@ params [
 	private _distance = (_cameraPosition distance2D _centerPos) - _radius;
 	
 	private _updatedPos = _camera getPos [_distance, _direction];
-	_updatedPos set[2, _cameraPosition select 2];
-
-	_camera setPos _updatedPos;
+	
+	_camera setPos [_updatedPos select 0, _updatedPos select 1, _cameraPosition select 2];
 }, 0, [_camera, _centerPos, _radius]] call CBA_fnc_addPerFrameHandler;

@@ -2,7 +2,7 @@
     File: fn_build_handleKeys.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-23
-    Last Update: 2026-01-26
+    Last Update: 2026-01-30
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -28,6 +28,14 @@ _args params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
 if (!_isKeyDownEvent) exitWith {};
 
 switch (_key) do {
+    case DIK_RETURN;
+    case DIK_NUMPADENTER: {
+        if (!GVAR(isSingleBuild)) exitWith {false};
+
+        [] call KPLIB_fnc_build_confirmBuild;
+
+        true
+    };
     case DIK_N: { // NVGs
         private _value = !GVAR(cameraUseNvg);
         camUseNVG _value;

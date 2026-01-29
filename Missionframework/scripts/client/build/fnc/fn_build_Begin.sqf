@@ -2,7 +2,7 @@
     File: fn_buildBegin.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-20
-    Last Update: 2026-01-26
+    Last Update: 2026-01-30
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -72,5 +72,7 @@ SVAR(ctrlDown, false);
 SVAR(shiftDown, false);
 SVAR(mouseDown, false);
 SVAR(repeatBuild, false);
+
+KPLIB_isBuilding = true;
 
 (findDisplay 46) createDisplay "RscBuildDialog";
