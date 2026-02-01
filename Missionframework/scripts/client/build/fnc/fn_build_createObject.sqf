@@ -24,7 +24,7 @@ params [
 
 if (_className isEqualTo "") exitWith {objNull};
 
-private _object = createVehicle [_className, zeroPos, [], 0, "NONE"];
+private _object = createVehicleLocal [_className, zeroPos, [], 0, "NONE"];
 _object enableSimulation false;
 _object setVariable ["KPLIB_buildPrice", [_supplyCost, _ammoCost, _fuelCost]];
 

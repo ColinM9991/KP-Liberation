@@ -26,8 +26,7 @@ params [
 _buildParams params [
 	["_className", "", [""]],
 	["_position", [], [[]]],
-	["_direction", 0, [0]],
-	["_vectorUp", [], [[]]],
+	["_vectorDirAndUp", [], [[]]],
 	["_price", [], [[]], 3]
 ];
 
@@ -40,7 +39,7 @@ _buildParams params [
 if (_className isKindOf "Man") then {
     [_className, _position, group _player] call KPLIB_fnc_createManagedUnit;
 } else {
-	[_className, _position, _direction, _vectorUp, _buildType] call KPLIB_fnc_build_buildItem;
+	[_className, _position, _vectorDirAndUp, _buildType] call KPLIB_fnc_build_buildItem;
 };
 
 switch (_buildType) do {

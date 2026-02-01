@@ -3,8 +3,6 @@ if (!isServer) exitWith {};
 params [ "_new_fob", "_create_fob_building" ];
 private [ "_fob_building", "_fob_pos" ];
 
-systemChat str _new_fob;
-
 KPLIB_sectors_fob pushback _new_fob;
 publicVariable "KPLIB_sectors_fob";
 

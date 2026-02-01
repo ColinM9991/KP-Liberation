@@ -19,18 +19,13 @@
 params[
     ["_className", "", [""]],
     ["_position", [], [[]]],
-    ["_dir", -1, [-1]],
-    ["_vectorUp", [], [[]]],
+    ["_vectorDirAndUp", [], [[]]],
     ["_buildType", -1, [-1]]
 ];
 
 private _vehicle = createVehicle [_className, zeroPos, [], 0, "NONE"];
-_vehicle allowDamage false;
-_vehicle enableSimulationGlobal false;
-
+_vehicle setVectorDirAndUp _vectorDirAndUp;
 _vehicle setPosATL _position;
-_vehicle setDir _dir;
-_Vehicle setVectorUp _vectorUp;
 
 if(_buildType isEqualTo BUILD_TYPE_SECTOR) then {
     _vehicle setVariable ["KPLIB_storage_type", 1, true];
@@ -47,7 +42,3 @@ if(_buildType != BUILD_TYPE_BUILDING) then {
     _vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
     { _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; true } count (crew _vehicle);
 };
-
-_vehicle enableSimulationGlobal true;
-_vehicle setDamage 0;
-_vehicle allowDamage true;

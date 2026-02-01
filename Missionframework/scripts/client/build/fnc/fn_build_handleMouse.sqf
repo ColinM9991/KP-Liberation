@@ -24,7 +24,7 @@ switch _eventType do {
         // Capture original coordinates for elevation adjustment
         if (_alt && !_isBuilding && !isNull (_cursorObject)) then {
             SVAR(originalMouseYPosition, _yPos);
-            SVAR(originalObjectPosition, getPosWorld _cursorObject);
+            SVAR(originalObjectPosition, getPosASL _cursorObject);
         };
 
         if (!_isBuilding) exitWith {};
@@ -96,7 +96,7 @@ switch _eventType do {
                 
                 private _newPos = [_originalPosition select 0, _originalPosition select 1, (_originalPosition select 2) + _heightDelta];
                 _object setVectorUp _vector;
-                _object setPosWorld _newPos;
+                _object setPosASL _newPos;
             };
             default {
                 // Moving

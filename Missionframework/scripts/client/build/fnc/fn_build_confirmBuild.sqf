@@ -30,13 +30,14 @@ if (_nearestFob isNotEqualTo []) then {
 {
 	private _className = typeOf _x;
 	private _position = getPosATL _x;
-	private _dir = getDir _x;
+	private _dir = vectorDir _x;
     private _vectorUp = vectorUp _x;
 	private _price = _x getVariable ["KPLIB_buildPrice", [0, 0, 0]];
 
+    _x setPosATL zeroPos;
 	deleteVehicle _x;
 
-	[[_className, _position, _dir, _vectorUp, _price], _buildType, _storageAreas, player] remoteExecCall ["KPLIB_fnc_build_confirmBuildServer", 2];
+	[[_className, _position, [_dir, _vectorUp], _price], _buildType, _storageAreas, player] remoteExecCall ["KPLIB_fnc_build_confirmBuildServer", 2];
 } forEach _validItems;
 
 [] call KPLIB_fnc_build_end;
