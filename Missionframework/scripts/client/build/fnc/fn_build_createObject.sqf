@@ -2,7 +2,7 @@
     File: fn_build_createObject.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-22
-    Last Update: 2026-01-25
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -24,8 +24,9 @@ params [
 
 if (_className isEqualTo "") exitWith {objNull};
 
-private _object = _className createVehicleLocal zeroPos;
+private _object = createVehicle [_className, zeroPos, [], 0, "NONE"];
 _object enableSimulation false;
 _object setVariable ["KPLIB_buildPrice", [_supplyCost, _ammoCost, _fuelCost]];
 
+player disableCollisionWith _object;
 _object

@@ -53,6 +53,8 @@ if (!(isNull _display)) then {
     _display closeDisplay 1;
 };
 
+["KPLIB_fnc_build_ended"] call CBA_fnc_localEvent;
+
 KPLIB_buildLogic call CBA_fnc_deleteNamespace;
 
 KPLIB_isBuilding = false;

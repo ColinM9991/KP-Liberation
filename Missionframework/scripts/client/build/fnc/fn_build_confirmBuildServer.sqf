@@ -2,7 +2,7 @@
     File: fn_build_confirmBuildServer.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-25
-    Last Update: 2026-01-26
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -27,6 +27,7 @@ _buildParams params [
 	["_className", "", [""]],
 	["_position", [], [[]]],
 	["_direction", 0, [0]],
+	["_vectorUp", [], [[]]],
 	["_price", [], [[]], 3]
 ];
 
@@ -36,11 +37,10 @@ _buildParams params [
 // 	[format["Cannot afford to build %1", _className]] remoteExecCall ["systemChat", owner player];
 // };
 
-private ["_object"];
 if (_className isKindOf "Man") then {
     [_className, _position, group _player] call KPLIB_fnc_createManagedUnit;
 } else {
-	_object = [_className, _position, _direction, _buildType] call KPLIB_fnc_build_buildItem;
+	[_className, _position, _direction, _vectorUp, _buildType] call KPLIB_fnc_build_buildItem;
 };
 
 switch (_buildType) do {

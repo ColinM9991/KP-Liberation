@@ -2,7 +2,7 @@
     File: fn_build_confirmBuild.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-01-26
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -31,11 +31,12 @@ if (_nearestFob isNotEqualTo []) then {
 	private _className = typeOf _x;
 	private _position = getPosATL _x;
 	private _dir = getDir _x;
+    private _vectorUp = vectorUp _x;
 	private _price = _x getVariable ["KPLIB_buildPrice", [0, 0, 0]];
 
 	deleteVehicle _x;
 
-	[[_className, _position, _dir, _price], _buildType, _storageAreas, player] remoteExecCall ["KPLIB_fnc_build_confirmBuildServer", 2];
+	[[_className, _position, _dir, _vectorUp, _price], _buildType, _storageAreas, player] remoteExecCall ["KPLIB_fnc_build_confirmBuildServer", 2];
 } forEach _validItems;
 
 [] call KPLIB_fnc_build_end;

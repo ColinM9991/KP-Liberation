@@ -103,7 +103,7 @@ switch _eventType do {
                 private _isPositionInArea = [_mousePos, GVAR(buildPosition), GVAR(buildRadius)] call KPLIB_fnc_build_isPositionInArea;
                 private _vector = [_mousePos] call KPLIB_fnc_build_getSurfaceVector;
 
-                _object setPosATL _mousePos;
+                _object setPosASL (AGLToASL _mousePos);
                 _object setVectorUp _vector;
                 _object setVariable ["KPLIB_build_validPlacement", _isPositionInArea];
             }

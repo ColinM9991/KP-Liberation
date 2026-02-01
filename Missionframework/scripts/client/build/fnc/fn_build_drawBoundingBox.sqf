@@ -2,7 +2,7 @@
     File: fn_drawBoundingBox.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-23
-    Last Update: 2026-01-26
+    Last Update: 2026-01-31
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -37,7 +37,8 @@ private _p2Z = _p2 select 2;
 	drawLine3D [
 		_object modelToWorldVisual (_x select 0),
 		_object modelToWorldVisual (_x select 1),
-        _color
+        _color,
+        6
 	];
 } forEach [
     [_p1, [_p2X, _p1Y, _p1Z]], // Lower front left to lower front right

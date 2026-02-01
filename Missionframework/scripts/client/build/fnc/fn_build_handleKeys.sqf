@@ -2,7 +2,7 @@
     File: fn_build_handleKeys.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-23
-    Last Update: 2026-01-30
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -86,7 +86,7 @@ switch (_key) do {
         true
     };
     case DIK_ESCAPE: {
-        if (GVAR(isSingleBuild)) exitWith {false};
+        if (GVAR(isSingleBuild)) exitWith {true};
         
         [] call KPLIB_fnc_build_end;
 

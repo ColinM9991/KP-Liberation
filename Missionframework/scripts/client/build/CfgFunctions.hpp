@@ -3,6 +3,7 @@ class Build {
 
     // Functions
     class build_begin               {};
+    class build_beginCore           {};
     class build_beginSingle         {};
     class build_end                 {};
     class build_buildItem           {};
