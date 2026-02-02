@@ -24,17 +24,13 @@ switch _eventType do {
         // Capture original coordinates for elevation adjustment
         if (_alt && !_isBuilding && !isNull (_cursorObject)) then {
             SVAR(originalMouseYPosition, _yPos);
-            SVAR(originalObjectPosition, getPosASL _cursorObject);
+            SVAR(originalObjectPosition, getPosWorld _cursorObject);
         };
 
         if (!_isBuilding) exitWith {};
 
         // Check placement bounds
         private _mousePos = GVAR(mousePos);
-        private _isPositionInArea = [_mousePos, GVAR(buildPosition), GVAR(buildRadius)] call KPLIB_fnc_build_isPositionInArea;
-        if (!_isPositionInArea) exitWith {
-            systemChat "Invalid build placement";
-        };
 
         // Allow for repeat building if holding CTRL when clicking
         if (!_ctrl) then {
@@ -43,7 +39,6 @@ switch _eventType do {
         } else {
             private _price = _cursorObject getVariable "KPLIB_buildPrice";
             private _object = ([typeOf _cursorObject] + _price) call KPLIB_fnc_build_createObject;
-            _object setDir (getDir _cursorObject);
             
             SVAR(cursorObject, vehicle _object);
         };
@@ -96,7 +91,7 @@ switch _eventType do {
                 
                 private _newPos = [_originalPosition select 0, _originalPosition select 1, (_originalPosition select 2) + _heightDelta];
                 _object setVectorUp _vector;
-                _object setPosASL _newPos;
+                _object setPosWorld _newPos;
             };
             default {
                 // Moving

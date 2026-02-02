@@ -2,7 +2,7 @@
     File: fn_build_beginSingle.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-01
+    Last Update: 2026-02-02
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -20,16 +20,12 @@
 params [
 	["_className", "", [""]],
 	["_pos", getPos player, [[]]],
-	["_buildType", -1, [-1]],
-	["_radius", KPLIB_range_fob, [0]]
+	["_radius", KPLIB_range_fob, [0]],
+    ["_delegate", {}, [{}]]
 ];
-
-if (_buildType isEqualTo -1) exitWith {};
 
 private _displayLoadedEventId = ["KPLIB_build_event_displayLoaded", {
 	private _display = _this;
-    
-    private _display = _this;
     {
 	    (_display displayCtrl _x) ctrlShow false;
     } forEach [
@@ -40,10 +36,15 @@ private _displayLoadedEventId = ["KPLIB_build_event_displayLoaded", {
         BUILD_HEADER_RESOURCES];
 }] call CBA_fnc_addEventHandler;
 
-["KPLIB_fnc_build_ended", {
+["KPLIB_build_event_ended", {
 	[_thisType, _thisId] call CBA_fnc_removeEventHandler;
     ["KPLIB_build_event_displayLoaded", _thisArgs] call CBA_fnc_removeEventHandler;
 }, _displayLoadedEventId] call CBA_fnc_addEventHandlerArgs;
+
+["KPLIB_build_event_itemBuilt", {
+    [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+    _this call _thisArgs;
+}, _delegate] call CBA_fnc_addEventHandlerArgs;
 
 [_pos, _radius] call KPLIB_fnc_build_beginCore;
 
@@ -53,4 +54,3 @@ private _object = _value call KPLIB_fnc_build_createObject;
 SVAR(cursorObject, vehicle _object);
 SVAR(isBuilding, true);
 SVAR(isSingleBuild, true);
-SVAR(buildType, _buildType);

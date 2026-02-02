@@ -2,7 +2,7 @@
     File: fn_build_handleKeys.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-23
-    Last Update: 2026-02-01
+    Last Update: 2026-02-02
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -48,10 +48,10 @@ switch (_key) do {
         if (GVAR(isSingleBuild)) exitWith {false};
         if (_ctrl && GVAR(isBuilding)) exitWith {false};
 
-        if (!(GVAR(isBuilding))) then {
-            private _cursorObject = [] call KPLIB_fnc_build_getCursorObject;
-            if (isNull _cursorObject) exitWith {false};
+        private _cursorObject = GVAR(cursorObject);
+        if (isNull _cursorObject) exitWith {false};
 
+        if (!(GVAR(isBuilding))) then {
             // Clone an existing object
             if (_ctrl) exitWith {
                 private _price = _cursorObject getVariable "KPLIB_buildPrice";
@@ -68,7 +68,7 @@ switch (_key) do {
 
             deleteVehicle _cursorObject;
         } else {
-            deleteVehicle GVAR(cursorObject);
+            deleteVehicle _cursorObject;
 
             SVAR(isBuilding, false);
             SVAR(cursorObject, objNull);

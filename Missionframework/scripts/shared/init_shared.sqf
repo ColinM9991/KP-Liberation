@@ -1,8 +1,6 @@
 kill_manager = compile preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
 
-build_remote_call = compile preprocessFileLineNumbers "scripts\server\remotecall\build_remote_call.sqf";
 build_fob_remote_call = compile preprocessFileLineNumbers "scripts\server\remotecall\build_fob_remote_call.sqf";
-cancel_build_remote_call = compile preprocessFileLineNumbers "scripts\server\remotecall\cancel_build_remote_call.sqf";
 prisonner_remote_call = compile preprocessFileLineNumbers "scripts\server\remotecall\prisonner_remote_call.sqf";
 recycle_remote_call = compile preprocessFileLineNumbers "scripts\server\remotecall\recycle_remote_call.sqf";
 reinforcements_remote_call = compile preprocessFileLineNumbers "scripts\server\remotecall\reinforcements_remote_call.sqf";

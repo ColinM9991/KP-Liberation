@@ -2,7 +2,7 @@
     File: fn_build_buildItem.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-01
+    Last Update: 2026-02-02
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -14,31 +14,25 @@
     Returns:
         Function reached the end [BOOL]
 */
-#include "defines.hpp"
-
 params[
     ["_className", "", [""]],
     ["_position", [], [[]]],
-    ["_vectorDirAndUp", [], [[]]],
-    ["_buildType", -1, [-1]]
+    ["_vectorDirAndUp", [], [[]]]
 ];
 
-private _vehicle = createVehicle [_className, zeroPos, [], 0, "NONE"];
-_vehicle setVectorDirAndUp _vectorDirAndUp;
-_vehicle setPosATL _position;
-
-if(_buildType isEqualTo BUILD_TYPE_SECTOR) then {
-    _vehicle setVariable ["KPLIB_storage_type", 1, true];
-} else {
-    [_vehicle] call KPLIB_fnc_addObjectInit;
-    [_vehicle] call KPLIB_fnc_clearCargo;
+private _vehicle = objNull;
+isNil {
+    _vehicle = createVehicle [_className, zeroPos, [], 500, "NONE"];
+    _vehicle setVectorDirAndUp _vectorDirAndUp;
+    _vehicle setPosWorld _position;
 };
+
+[_vehicle] call KPLIB_fnc_addObjectInit;
+[_vehicle] call KPLIB_fnc_clearCargo;
 
 if(unitIsUAV _vehicle) then {
     [_vehicle] call KPLIB_fnc_forceBluforCrew;
 };
 
-if(_buildType != BUILD_TYPE_BUILDING) then {
-    _vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-    { _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; true } count (crew _vehicle);
-};
+["KPLIB_build_event_itemBuilt", _vehicle] call CBA_fnc_localEvent;
+["KPLIB_build_event_itemBuilt", _vehicle] call CBA_fnc_serverEvent;

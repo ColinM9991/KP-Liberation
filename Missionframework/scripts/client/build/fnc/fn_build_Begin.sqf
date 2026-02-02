@@ -2,7 +2,7 @@
     File: fn_build_Begin.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-31
-    Last Update: 2026-02-01
+    Last Update: 2026-02-02
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -112,7 +112,7 @@ private _displayLoadedEventId = ["KPLIB_build_event_displayLoaded", {
 	];
 }, _pos] call CBA_fnc_addEventHandlerArgs;
 
-["KPLIB_fnc_build_ended", {
+["KPLIB_build_event_ended", {
 	[_thisType, _thisId] call CBA_fnc_removeEventHandler;
     ["KPLIB_build_event_displayLoaded", _thisArgs] call CBA_fnc_removeEventHandler;
 }, _displayLoadedEventId] call CBA_fnc_addEventHandlerArgs;

@@ -148,3 +148,14 @@ if (KPLIB_param_restart > 0) then {
         }
     } foreach allGroups;
 }] call CBA_fnc_addEventHandler;
+
+["KPLIB_event_fobResourcesSpent", {
+    params ["_fobPosition", "_cost"];
+    _cost params ["_supplyCost", "_ammoCost", "_fuelCost"];
+
+    stats_supplies_spent = stats_supplies_spent + _supplyCost;
+    stats_ammo_spent = stats_ammo_spent + _ammoCost;
+    stats_fuel_spent = stats_fuel_spent + _fuelCost;
+
+    please_recalculate = true;
+}] call CBA_fnc_addEventHandler;

@@ -2,7 +2,7 @@
     File: fn_canBuildItem.sqf
     Author: ColinM https://github.com/ColinM9991/KP-Liberation
     Date: 2022-07-28
-    Last Update: 2026-01-25
+    Last Update: 2026-02-02
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -23,13 +23,6 @@ params[
 	["_ammoCost", 0, [0]],
 	["_fuelCost", 0, [0]]
 ];
-
-// private _buildType = KPLIB_buildList findIf { [_className, _supplyCost, _ammoCost, _fuelCost] in _x };
-
-// If it's AI, execute the relevant checks.
-// if(_buildType isEqualTo BUILD_TYPE_INFANTRY || _buildType isEqualTo BUILD_TYPE_GROUPS) exitWith {
-//     [_className, _supplyCost, _ammoCost, _fuelCost, _buildType] call KPLIB_fnc_canBuildAI;
-// };
 
 private _fob = player getVariable ["KPLIB_fobPos", position player];
 

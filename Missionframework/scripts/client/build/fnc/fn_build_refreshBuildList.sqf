@@ -2,7 +2,7 @@
     File: fn_build_refreshBuildList.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-01-25
+    Last Update: 2026-02-02
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -18,7 +18,7 @@
 #include "..\ui\defines.hpp"
 #include "defines.hpp"
 
-private _dialog = GVAR(dialog);
+private _display = GVAR(display);
 private _buildDialogItemsList = _display displayCtrl BUILD_LIST_IDC;
 private _buildTypeList = _display displayCtrl BUILD_CATEGORY_IDC;
 private _buildType = lbCurSel _buildTypeList;

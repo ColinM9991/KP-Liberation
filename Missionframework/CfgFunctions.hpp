@@ -13,6 +13,7 @@ class KPLIB {
         class checkWeaponCargo          {};
         class cleanOpforVehicle         {};
         class clearCargo                {};
+        class consumeFobResources       {};
         class crAddAceAction            {};
         class crateFromStorage          {};
         class crateToStorage            {};
