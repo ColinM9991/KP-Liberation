@@ -2,7 +2,7 @@
     File: fn_build_preInit.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -78,7 +78,7 @@ if (hasInterface) then {
 		private _buildCartList = _display displayCtrl BUILD_CART_IDC;
 
 		_buildCartList lnbDeleteRow _rowIndex;
-		SVAR(buildCart, _buildCart - [_this]);
+		_buildCart deleteAt _rowIndex;
 
 		[] call KPLIB_fnc_build_refreshBuildList;
 	}] call CBA_fnc_addEventHandler;

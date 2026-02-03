@@ -2,7 +2,7 @@
     File: fn_build_confirmBuild.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -26,19 +26,11 @@ private _buildItems = _validItems apply {
     _data
 };
 
-// deleteVehicle deletes objects in the next frame
-// Wait until the objects are deleted and then spawn the real objects.
-// This helps with local testing where createVehicleLocal objects are global to the server and client.
-// This shouldn't be an issue on a dedicated server
 [
     {
-        _this params ["_buildItems", "_storageAreas"];
-
-        {
-            [_x, player] remoteExecCall ["KPLIB_fnc_build_confirmBuildServer", 2];
-        } forEach _buildItems;
+        [_this, player] remoteExecCall ["KPLIB_fnc_build_confirmBuildServer", 2];
         [] call KPLIB_fnc_build_end;
     },
-    [_buildItems],
+    _buildItems,
     5
 ] call CBA_fnc_execAfterNFrames;

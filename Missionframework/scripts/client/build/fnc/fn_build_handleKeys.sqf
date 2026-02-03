@@ -2,7 +2,7 @@
     File: fn_build_handleKeys.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-23
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -56,7 +56,7 @@ switch (_key) do {
             if (_ctrl) exitWith {
                 private _price = _cursorObject getVariable "KPLIB_buildPrice";
                 private _object = ([typeOf _cursorObject] + _price) call KPLIB_fnc_build_createObject;
-                _object setDir (getDir _cursorObject);
+                _object setVectorDirAndUp [vectorDir _cursorObject, vectorUp _cursorObject];
                 
                 SVAR(isBuilding, true);
                 SVAR(cursorObject, vehicle _object);
