@@ -2,7 +2,7 @@
     File: fn_build_Begin.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-31
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -110,11 +110,11 @@ private _displayLoadedEventId = ["KPLIB_build_event_displayLoaded", {
 		KPLIB_plane_slots,
 		image "\A3\Air_F_EPC\Plane_CAS_01\Data\UI\Map_Plane_CAS_01_CA.paa"
 	];
-}, _pos] call CBA_fnc_addEventHandlerArgs;
+}, _pos] call KPLIB_fnc_addEventHandlerArgs;
 
 ["KPLIB_build_event_ended", {
-	[_thisType, _thisId] call CBA_fnc_removeEventHandler;
-    ["KPLIB_build_event_displayLoaded", _thisArgs] call CBA_fnc_removeEventHandler;
-}, _displayLoadedEventId] call CBA_fnc_addEventHandlerArgs;
+	[_thisType, _thisId] call KPLIB_fnc_removeEventHandler;
+    ["KPLIB_build_event_displayLoaded", _thisArgs] call KPLIB_fnc_removeEventHandler;
+}, _displayLoadedEventId] call KPLIB_fnc_addEventHandlerArgs;
 
 [_pos, _radius] call KPLIB_fnc_build_beginCore;

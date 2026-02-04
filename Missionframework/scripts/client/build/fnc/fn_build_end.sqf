@@ -2,7 +2,7 @@
     File: fn_build_end.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -53,7 +53,7 @@ if (!(isNull _display)) then {
     _display closeDisplay 1;
 };
 
-["KPLIB_build_event_ended"] call CBA_fnc_localEvent;
+["KPLIB_build_event_ended"] call KPLIB_fnc_localEvent;
 
 KPLIB_buildLogic call CBA_fnc_deleteNamespace;
 

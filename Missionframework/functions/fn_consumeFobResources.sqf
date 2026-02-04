@@ -2,7 +2,7 @@
     File: fn_consumeFobResources.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-27
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -56,4 +56,4 @@ private _costsAndCrates = [[_supplyCost, _supplyCrates], [_ammoCost, _ammoCrates
 	};
 } forEach _costsAndCrates;
 
-["KPLIB_event_fobResourcesSpent", [_fobPosition, [_supplyCost, _ammoCost, _fuelCost]]] call CBA_fnc_serverEvent;
+["KPLIB_event_fobResourcesSpent", [_fobPosition, [_supplyCost, _ammoCost, _fuelCost]]] call KPLIB_fnc_serverEvent;

@@ -45,6 +45,6 @@ if (!_clearedtobuildfob) then {
         publicVariable "FOB_build_in_progress";
     } else {
         deleteVehicle (_this select 0);
-        ["KPLIB_build_event_fobBuildRequested"] call CBA_fnc_localEvent;
+        ["KPLIB_build_event_fobBuildRequested"] call KPLIB_fnc_localEvent;
     };
 };

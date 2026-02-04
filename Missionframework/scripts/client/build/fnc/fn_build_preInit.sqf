@@ -28,17 +28,16 @@ if (isServer) then {
                 stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
             };
         };
-
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 
 	["KPLIB_build_event_sectorStorageCreated", {
 		_this setVariable ["KPLIB_storage_type", 1, true];
 		recalculate_sectors = true;
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 
 	["KPLIB_build_event_fobCreated", {
 		[position _this, false] spawn build_fob_remote_call;
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 };
 
 if (hasInterface) then {
@@ -61,7 +60,7 @@ if (hasInterface) then {
 		};
 
 		[] call KPLIB_fnc_build_refreshBuildList;
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 
 	["KPLIB_build_event_objectRemoved", {
 		private _buildCart = GVAR(buildCart);
@@ -76,7 +75,7 @@ if (hasInterface) then {
 		_buildCart deleteAt _rowIndex;
 
 		[] call KPLIB_fnc_build_refreshBuildList;
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 
 	["KPLIB_build_event_fobBuildRequested", {
 		[
@@ -84,9 +83,9 @@ if (hasInterface) then {
 			getPos player,
 			KPLIB_range_fob,
 			{
-				["KPLIB_build_event_fobCreated", _this] call CBA_fnc_serverEvent;
+				["KPLIB_build_event_fobCreated", _this] call KPLIB_fnc_serverEvent;
 			}] call KPLIB_fnc_build_beginSingle;
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 
 	["KPLIB_build_event_sectorStorageRequested", {
 		[
@@ -94,9 +93,9 @@ if (hasInterface) then {
 			_this,
 			KPLIB_range_fob,
 			{
-				["KPLIB_build_event_sectorStorageCreated", _this] call CBA_fnc_serverEvent;
+				["KPLIB_build_event_sectorStorageCreated", _this] call KPLIB_fnc_serverEvent;
 			}] call KPLIB_fnc_build_beginSingle;
-	}] call CBA_fnc_addEventHandler;
+	}] call KPLIB_fnc_addEventHandler;
 
 	player addEventHandler ["Killed", {
 		if (KPLIB_isBuilding) then {

@@ -2,7 +2,7 @@
     File: fn_build_beginSingle.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -34,17 +34,17 @@ private _displayLoadedEventId = ["KPLIB_build_event_displayLoaded", {
         BUILD_PANEL_LEFT_HEADER,
         BUILD_PANEL_RIGHT_HEADER,
         BUILD_HEADER_RESOURCES];
-}] call CBA_fnc_addEventHandler;
+}] call KPLIB_fnc_addEventHandler;
 
 ["KPLIB_build_event_ended", {
-	[_thisType, _thisId] call CBA_fnc_removeEventHandler;
-    ["KPLIB_build_event_displayLoaded", _thisArgs] call CBA_fnc_removeEventHandler;
-}, _displayLoadedEventId] call CBA_fnc_addEventHandlerArgs;
+	[_thisType, _thisId] call KPLIB_fnc_removeEventHandler;
+    ["KPLIB_build_event_displayLoaded", _thisArgs] call KPLIB_fnc_removeEventHandler;
+}, _displayLoadedEventId] call KPLIB_fnc_addEventHandlerArgs;
 
 ["KPLIB_build_event_itemBuilt", {
-    [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+    [_thisType, _thisId] call KPLIB_fnc_removeEventHandler;
     _this call _thisArgs;
-}, _delegate] call CBA_fnc_addEventHandlerArgs;
+}, _delegate] call KPLIB_fnc_addEventHandlerArgs;
 
 [_pos, _radius] call KPLIB_fnc_build_beginCore;
 

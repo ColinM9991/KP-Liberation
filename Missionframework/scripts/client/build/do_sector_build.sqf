@@ -4,4 +4,4 @@ if (((_this select 3) select 0) != KPLIB_b_smallStorage) exitWith {
 
 private _sectorPos = markerPos ([100] call KPLIB_fnc_getNearestSector);
 
-["KPLIB_build_event_sectorStorageRequested", _sectorPos] call CBA_fnc_localEvent;
+["KPLIB_build_event_sectorStorageRequested", _sectorPos] call KPLIB_fnc_localEvent;

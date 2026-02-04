@@ -64,7 +64,7 @@ switch (_key) do {
                 true
             };
 
-            ["KPLIB_build_event_objectRemoved", _cursorObject] call CBA_fnc_localEvent;
+            ["KPLIB_build_event_objectRemoved", _cursorObject] call KPLIB_fnc_localEvent;
 
             deleteVehicle _cursorObject;
         } else {

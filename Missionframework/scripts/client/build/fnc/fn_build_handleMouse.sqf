@@ -43,7 +43,7 @@ switch _eventType do {
             SVAR(cursorObject, vehicle _object);
         };
         
-        ["KPLIB_build_event_objectPlaced", _cursorObject] call CBA_fnc_localEvent;
+        ["KPLIB_build_event_objectPlaced", _cursorObject] call KPLIB_fnc_localEvent;
     };
     case "onMouseButtonUp": {
         _args params ["_displayOrControl", "_button", "", "", "_shift", "_ctrl", "_alt"];

@@ -2,7 +2,7 @@
     File: fn_build_onDisplayLoad.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-20
-    Last Update: 2026-01-31
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -22,4 +22,4 @@ params [
 
 SVAR(display, _display);
 
-["KPLIB_build_event_displayLoaded", _display] call CBA_fnc_localEvent;
+["KPLIB_build_event_displayLoaded", _display] call KPLIB_fnc_localEvent;

@@ -2,7 +2,7 @@
     File: fn_build_buildItem.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-02
+    Last Update: 2026-02-03
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -34,5 +34,5 @@ if(unitIsUAV _vehicle) then {
     [_vehicle] call KPLIB_fnc_forceBluforCrew;
 };
 
-["KPLIB_build_event_itemBuilt", _vehicle] call CBA_fnc_localEvent;
-["KPLIB_build_event_itemBuilt", _vehicle] call CBA_fnc_serverEvent;
+["KPLIB_build_event_itemBuilt", _vehicle] call KPLIB_fnc_localEvent;
+["KPLIB_build_event_itemBuilt", _vehicle] call KPLIB_fnc_serverEvent;

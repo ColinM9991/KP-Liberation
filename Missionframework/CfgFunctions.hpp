@@ -1,4 +1,6 @@
 class KPLIB {
+    #include "events\CfgFunctions.hpp"
+    
     class functions {
         file = "functions";
 

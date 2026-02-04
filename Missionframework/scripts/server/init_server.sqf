@@ -152,9 +152,9 @@ if (KPLIB_param_restart > 0) then {
     stats_fuel_spent = stats_fuel_spent + _fuelCost;
 
     please_recalculate = true;
-}] call CBA_fnc_addEventHandler;
+}] call KPLIB_fnc_addEventHandler;
 
 addMissionEventHandler ["EntityKilled", {
     params ["_unit", "_killer"];
     [_unit, _killer] call kill_manager;
-}]
+}];
