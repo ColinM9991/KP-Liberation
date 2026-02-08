@@ -13,6 +13,7 @@ class KPLIB {
         class checkWeaponCargo          {};
         class cleanOpforVehicle         {};
         class clearCargo                {};
+        class consumeFobResources       {};
         class crAddAceAction            {};
         class crateFromStorage          {};
         class crateToStorage            {};
@@ -101,6 +102,5 @@ class KPLIB {
     };
     #include "scripts\client\CfgFunctions.hpp"
     #include "scripts\client\build\CfgFunctions.hpp"
-    #include "scripts\client\build\ui\CfgFunctions.hpp"
     #include "scripts\server\CfgFunctions.hpp"
 };

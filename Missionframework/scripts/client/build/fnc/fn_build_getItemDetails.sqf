@@ -1,20 +1,18 @@
 /*
-    File: fn_getBuildItemDetails.sqf
-    Author: ColinM https://github.com/ColinM9991/KP-Liberation
-    Date: 2022-07-28
-    Last Update: 2022-07-28
+    File: fn_build_getItemDetails.sqf
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Date: 2026-01-20
+    Last Update: 2026-01-20
     License: MIT License - http://www.opensource.org/licenses/MIT
-
+    
     Description:
-        Retrieves the name and icon for a build item
-
+        No description added yet.
+    
     Parameter(s):
-        _className      - The classname of the menu item
-        _prices         - The prices of the menu item
-
+        _localVariable - Description [DATATYPE, defaults to DEFAULTVALUE]
+    
     Returns:
-        An array of the item details
-        [Name, Icon, [Supplies, Ammo, Fuel]]
+        Function reached the end [BOOL]
 */
 
 params[

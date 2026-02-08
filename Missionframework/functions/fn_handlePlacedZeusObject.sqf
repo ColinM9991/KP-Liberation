@@ -2,7 +2,7 @@
     File: fn_handlePlacedZeusObject.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-04-11
-    Last Update: 2023-10-28
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -32,21 +32,12 @@ if (_vehicle) then {
 
     // Add kill manager and object init to possible crew units
     {
-        _x addMPEventHandler ["MPKilled", {
-            params ["_unit", "_killer"];
-            ["KPLIB_manageKills", [_unit, _killer]] call CBA_fnc_localEvent;
-        }];
         [_x] call KPLIB_fnc_addObjectInit;
     } forEach (crew _obj);
 };
 
 // Apply kill manager, if it's not a crate
-if !(_crate) then {
-    _obj addMPEventHandler ["MPKilled", {
-        params ["_unit", "_killer"];
-        ["KPLIB_manageKills", [_unit, _killer]] call CBA_fnc_localEvent;
-    }];
-} else {
+if (_crate) then {
     // Otherwise apply all needed values/functionalities
     _obj setMass 500;
     _obj setVariable ["KPLIB_crate_value", 100, true];

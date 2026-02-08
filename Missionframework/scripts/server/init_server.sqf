@@ -123,13 +123,6 @@ execVM "scripts\server\asymmetric\init_module.sqf";
 // Groupcheck for deletion when empty
 execVM "scripts\server\offloading\group_diag.sqf";
 
-// Server event(s)
-["KPLib_manageKills", {
-    params ["_unit", "_killer"];
-    [_unit, _killer] call kill_manager;
-}] call CBA_fnc_addEventHandler;
-
-
 {
     if ((_x != player) && (_x distance (markerPos KPLIB_respawn_marker) < 200 )) then {
         deleteVehicle _x;
@@ -141,6 +134,7 @@ if (KPLIB_param_restart > 0) then {
     execVM "scripts\server\game\server_restart.sqf";
 };
 
+// Server event(s)
 ["KPLIB_ResetBattleGroups", {
     {
         if (_x getVariable ["KPLIB_isBattleGroup", false]) then {
@@ -148,3 +142,19 @@ if (KPLIB_param_restart > 0) then {
         }
     } foreach allGroups;
 }] call CBA_fnc_addEventHandler;
+
+["KPLIB_event_fobResourcesSpent", {
+    params ["_fobPosition", "_cost"];
+    _cost params ["_supplyCost", "_ammoCost", "_fuelCost"];
+
+    stats_supplies_spent = stats_supplies_spent + _supplyCost;
+    stats_ammo_spent = stats_ammo_spent + _ammoCost;
+    stats_fuel_spent = stats_fuel_spent + _fuelCost;
+
+    please_recalculate = true;
+}] call CBA_fnc_addEventHandler;
+
+addMissionEventHandler ["EntityKilled", {
+    params ["_unit", "_killer"];
+    [_unit, _killer] call kill_manager;
+}]

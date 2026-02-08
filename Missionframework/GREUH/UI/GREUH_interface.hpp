@@ -85,7 +85,7 @@
 
 #define BASE_Y 			0.075
 
-class RscListBox {
+class GreuhListBox {
 	idc = -1;
 	type = 5;
 	style = 0 + 0x10;
@@ -122,7 +122,7 @@ class RscListBox {
 	};
 };
 
-class RscCombo {
+class GreuhCombo {
 	idc = -1;
 	type = 4;
 	style = 1;
@@ -311,7 +311,7 @@ class GREUH_Menu {
 		y = ((BASE_Y + 0.07) * safezoneH) + safezoneY;
 		text = $STR_GREUH_SQUAD_MANAGEMENT;
 	};
-	class GREUH_SquadList : RscListBox {
+	class GREUH_SquadList : GreuhListBox {
 		idc = 515;
 		x = 0.15 * safezoneW + safezoneX;
 		w = 0.15 * safezoneW;
@@ -439,7 +439,7 @@ class GREUH_Menu {
 		text = $STR_GREUH_CANCEL;
 		action = "squadaction = ''";
 	};
-	class GREUH_Squad_Combo : RscCombo {
+	class GREUH_Squad_Combo : GreuhCombo {
 		idc = 567;
 		x = (0.37 * safezoneW + safezoneX) + BORDERSIZE;
 		w = 0.11 * safezoneW;

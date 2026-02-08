@@ -1798,7 +1798,7 @@
             <Korean>플레이어수에 따른 적군 활동 조절</Korean>
             <Czech>Počet nepřátel se adaptuje na počet hráčů</Czech>
         </Key>
-        <Key ID="STR_BUILD1">
+        <Key ID="STR_BUILD0">
             <Original>Infantry units</Original>
             <French>Unités d'infanterie</French>
             <German>Infanterie</German>
@@ -1812,7 +1812,7 @@
             <Korean>보병 부대</Korean>
             <Czech>Pěchota</Czech>
         </Key>
-        <Key ID="STR_BUILD2">
+        <Key ID="STR_BUILD1">
             <Original>Light vehicles</Original>
             <French>Véhicules légers</French>
             <German>Leichte Fahrzeuge</German>
@@ -1826,7 +1826,7 @@
             <Korean>전투 차량</Korean>
             <Czech>Lehká vozidla</Czech>
         </Key>
-        <Key ID="STR_BUILD3">
+        <Key ID="STR_BUILD2">
             <Original>Armored vehicles</Original>
             <French>Vehicules blindés</French>
             <German>Gepanzerte Fahrzeuge</German>
@@ -1840,7 +1840,7 @@
             <Korean>장갑 차량</Korean>
             <Czech>Obrněná vozidla</Czech>
         </Key>
-        <Key ID="STR_BUILD4">
+        <Key ID="STR_BUILD3">
             <Original>Air vehicles</Original>
             <French>Véhicules aériens</French>
             <German>Luftfahrzeuge</German>
@@ -1854,7 +1854,7 @@
             <Korean>항공기</Korean>
             <Czech>Letectvo</Czech>
         </Key>
-        <Key ID="STR_BUILD5">
+        <Key ID="STR_BUILD4">
             <Original>Static defenses</Original>
             <French>Defenses statiques</French>
             <German>Statische Verteidigung</German>
@@ -1868,7 +1868,7 @@
             <Korean>방어 무기</Korean>
             <Czech>Statické zbraně</Czech>
         </Key>
-        <Key ID="STR_BUILD6">
+        <Key ID="STR_BUILD5">
             <Original>Buildings</Original>
             <French>Batiments</French>
             <German>Gebäude</German>
@@ -1882,7 +1882,7 @@
             <Korean>건설 물품</Korean>
             <Czech>Budovy</Czech>
         </Key>
-        <Key ID="STR_BUILD7">
+        <Key ID="STR_BUILD6">
             <Original>Logistics</Original>
             <French>Logistique</French>
             <German>Logistik</German>
@@ -1896,7 +1896,7 @@
             <Korean>후방보급부대</Korean>
             <Czech>Logistika</Czech>
         </Key>
-        <Key ID="STR_BUILD8">
+        <Key ID="STR_BUILD7">
             <Original>Infantry squads</Original>
             <French>Escouades d'infanterie</French>
             <German>Infanteriegruppen</German>
