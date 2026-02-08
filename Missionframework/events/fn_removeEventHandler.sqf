@@ -17,16 +17,14 @@ params [
 	["_eventId", "", [""]]
 ];
 
-if (_eventName isEqualTo "" || _eventId isEqualTo "") exitWith{};
+if (_eventName isEqualTo "" || _eventId isEqualTo "") exitWith{
+    [format ["Invalid parameters passed to %1: eventName - %2, eventId - %3", __FILE__, _eventName, _eventId], "EVENTS"] call KPLIB_fnc_log;
+};
 
 private _eventHandlers = KPLIB_events getOrDefault [_eventName, createHashMap];
 
 _eventHandlers deleteAt _eventId;
 
-private _eventArgs = KPLIB_eventArgs;
-{
-    _x params ["", "", "_type", "_id"];
-    if (_type isEqualTo _eventName && _id isEqualTo _eventId) then {
-        KPLIB_eventArgs deleteAt _forEachIndex;
-    };
-} forEach _eventArgs;
+if (_eventId in KPLIB_eventArgs) then {
+    KPLIB_eventArgs deleteAt _eventId;
+};

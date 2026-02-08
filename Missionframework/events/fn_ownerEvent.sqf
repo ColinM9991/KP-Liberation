@@ -2,7 +2,7 @@
     File: fn_ownerEvent.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2026-02-03
-    Last Update: 2026-02-03
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -19,7 +19,9 @@ params [
 	["_owner", -1, [-1]]
 ];
 
-if (_owner isEqualTo -1) exitWith {};
+if (_owner isEqualTo -1) exitWith {
+    [format ["Invalid owner passed to %1: %2", __FILE__, _owner], "EVENTS"] call KPLIB_fnc_log;
+};
 
 switch (_owner) do {
     case 2: {[_eventName, _eventArgs] call KPLIB_fnc_serverEvent;};

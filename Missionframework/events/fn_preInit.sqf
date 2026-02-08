@@ -9,4 +9,4 @@
         Initializes the events module
 */
 KPLIB_events = createHashMap;
-KPLIB_eventArgs = [];
+KPLIB_eventArgs = createHashMap;
