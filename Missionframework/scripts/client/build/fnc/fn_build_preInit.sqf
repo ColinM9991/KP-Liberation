@@ -2,7 +2,7 @@
     File: fn_build_preInit.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2026-01-24
-    Last Update: 2026-02-03
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -28,11 +28,6 @@ if (isServer) then {
                 stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
             };
         };
-
-		if (_vehicle isKindOf "AllVehicles") then {
-			_vehicle addMPEventHandler ["MPKilled", { ["KPLib_manageKills", _this] call CBA_fnc_localEvent; }];
-			{ _x addMPEventHandler ["MPKilled", { ["KPLib_manageKills", _this] call CBA_fnc_localEvent; }]; true } count (crew _vehicle);
-		};
 
 	}] call CBA_fnc_addEventHandler;
 

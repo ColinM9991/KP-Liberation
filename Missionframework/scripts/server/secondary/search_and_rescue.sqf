@@ -78,10 +78,6 @@ private _spawnchances = [75,50,15];
 {if (random 100 < _x) then {_vehtospawn pushBack (selectRandom _vehicle_pool);};} foreach _spawnchances;
 {
     private _vehicle = [(getpos _helowreck) getPos [30 + (random 30), random 360], _x, true] call KPLIB_fnc_spawnVehicle;
-    _vehicle addMPEventHandler ["MPKilled", {
-        params ["_unit", "_killer"];
-        ["KPLIB_manageKills", [_unit, _killer]] call CBA_fnc_localEvent;
-    }];
 } foreach _vehtospawn;
 
 secondary_objective_position = getpos _helowreck;

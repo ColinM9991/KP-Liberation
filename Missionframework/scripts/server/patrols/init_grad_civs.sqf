@@ -2,7 +2,7 @@
     File: init_grad_civs.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2022-07-25
-    Last Update: 2022-08-03
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -15,14 +15,6 @@
     Returns:
         NONE
 */
-
-{
-    [_x, {
-        params ["", "_killer", "_victim"];
-
-        ["KPLIB_manageKills", [_victim, _killer]] call CBA_fnc_localEvent;
-    }] call CBA_fnc_addEventHandler;
-} forEach ["grad_civs_civKilled", "grad_civs_cars_vehKilled"];
 
 ["CBA_SettingsInitialized", {
     [format["Initializing Civilians %1 %2", KPLIB_c_units, KPLIB_c_vehicles], "GRAD CIVS"] call KPLIB_fnc_log;
