@@ -2,7 +2,7 @@
     File: fn_localEvent.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2026-02-03
-    Last Update: 2026-02-03
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -17,9 +17,9 @@ params [
 	["_eventArgs", []]
 ];
 
-private _eventRegistration = KPLIB_events getOrDefault[_eventName, createHashMap];
-private _eventHandlers = _eventRegistration getOrDefault ["events", createHashMap];
+private _eventHandlers = KPLIB_events getOrDefault[_eventName, createHashMap];
+private _functions = values _eventHandlers;
 
 {
-	_eventArgs call _y;
-} forEach _eventHandlers;
+	_eventArgs call _x;
+} forEach _functions;

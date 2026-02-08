@@ -2,7 +2,7 @@
     File: fn_addEventHandler.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2026-02-03
-    Last Update: 2026-02-03
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -19,11 +19,8 @@ params [
 
 if (_eventName isEqualTo "" || isNil "_eventFunction") exitWith {};
 
-private _eventRegistration = KPLIB_events getOrDefault [_eventName, createHashMap, true];
-private _eventHandlers = _eventRegistration getOrDefault ["events", createHashMap, true];
-private _eventId = _eventRegistration getOrDefault ["#nextEventId", 0];
+private _eventHandlers = KPLIB_events getOrDefault [_eventName, createHashMap, true];
+private _eventId = hashValue _eventFunction;
 
 _eventHandlers set [_eventId, _eventFunction];
-_eventRegistration set ["#nextEventId", _eventId + 1];
-
 _eventId

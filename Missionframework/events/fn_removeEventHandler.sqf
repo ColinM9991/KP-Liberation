@@ -2,7 +2,7 @@
     File: fn_removeEventHandler.sqf
     Author: ColinM - https://github.com/ColinM9991/KP-Liberation
     Date: 2026-02-03
-    Last Update: 2026-02-03
+    Last Update: 2026-02-08
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -14,12 +14,19 @@
 */
 params [
 	["_eventName", "", [""]],
-	["_eventId", -1, [-1]]
+	["_eventId", "", [""]]
 ];
 
-if (_eventName isEqualTo "" || _eventId isEqualTo -1) exitWith{};
+if (_eventName isEqualTo "" || _eventId isEqualTo "") exitWith{};
 
-private _eventRegistrations = KPLIB_events getOrDefault [_eventName, createHashMap];
-private _eventHandlers = _eventRegistrations getOrDefault ["events", createHashMap];
+private _eventHandlers = KPLIB_events getOrDefault [_eventName, createHashMap];
 
 _eventHandlers deleteAt _eventId;
+
+private _eventArgs = KPLIB_eventArgs;
+{
+    _x params ["", "", "_type", "_id"];
+    if (_type isEqualTo _eventName && _id isEqualTo _eventId) then {
+        KPLIB_eventArgs deleteAt _forEachIndex;
+    };
+} forEach _eventArgs;
