@@ -6,7 +6,7 @@
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
-        Adds an event handler for the specified event. CBA compatible API.
+        Adds an event handler for the specified event. Exists for backwards compatibility with CBA..
         The following parameters are passed to the event function:
             _thisArgs   - The additional arguments passed to the event
             _thisFnc    - The event delegate

@@ -8,5 +8,8 @@
     Description:
         Initializes the events module
 */
+
+["Initializing events module...", "EVENTS"] call KPLIB_fnc_log;
+
 KPLIB_events = createHashMap;
 KPLIB_eventArgs = createHashMap;

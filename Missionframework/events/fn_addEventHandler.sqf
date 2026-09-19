@@ -16,7 +16,7 @@
 params [
 	["_eventName", "", [""]],
 	["_eventFunction", nil, [{}]],
-    ["_arguments", []]
+    ["_arguments", nil]
 ];
 
 if (_eventName isEqualTo "" || isNil "_eventFunction") exitWith {
@@ -25,12 +25,11 @@ if (_eventName isEqualTo "" || isNil "_eventFunction") exitWith {
 
 private _eventHandlers = KPLIB_events getOrDefault [_eventName, createHashMap, true];
 private _eventId = hashValue _eventFunction;
-
 if (_eventId in _eventHandlers) exitWith {
     [format ["Event handler with id %1 already exists for event %2", _eventId, _eventName], "EVENTS"] call KPLIB_fnc_log;
 };
 
-if (_arguments isNotEqualTo []) then {
+if (!isNil "_arguments") then {
     KPLIB_eventArgs set [_eventId, [_arguments, _eventFunction, _eventName, _eventId]];
     
     _eventFunction = compileFinal format['
@@ -39,6 +38,8 @@ if (_arguments isNotEqualTo []) then {
         _this call _thisFnc;
     ', _eventId];
 };
+
+[format ["Adding event handler for event %1 with id %2", _eventName, _eventId], "EVENTS"] call KPLIB_fnc_log;
 
 _eventHandlers set [_eventId, _eventFunction];
 
